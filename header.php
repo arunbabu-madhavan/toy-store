@@ -1,5 +1,4 @@
 <?php
-    session_start();
     $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
 ?>
 <header>
@@ -7,7 +6,7 @@
         <img src="images/logo.png" alt="logo"/>
         <div class="search-box">
             <form action="search.php" method="GET" >
-                <input type="text" name="search" placeholder="Search keyword or item..."/>
+                <input type="search" autocomplete="off" name="search" placeholder="Search keyword or item..."/>
                 <input type="submit" value="Search"/>
             </form>
         </div>
