@@ -13,21 +13,20 @@ session_start();
 			  crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site.css">
-    <script src="js/index.js"></script>
     <script src="js/checkout.js"></script>
   </head>
 <body>
-  <?php include 'header.php' ?>
+  <!--<?php include 'header.php' ?>-->
   <main><div id="accordion">
-    <h3>Account Details</h3>
+    <h3 class="accountDetails">Account Details</h3>
     <div><h5>Choose your checkout option</h5><br>Register with us for a faster checkout, to track the status of your order and more. You can also checkout as a guest.<br>
     <form><input type="radio" name="method" value="guest" />Checkout as Guest<br>
     <input type="radio" name="method" value="register" />Register an Account<br>
-    <input type="radio" name="method" value="returningCust" />Login<br>
+    <input type="radio" name="method" value="returningCust" />Returning customer<br>
     <button type="button" id="pickCheckout">Continue</button><br>
     </form>
     </div>
-    <h3>Billing Details</h3>
+    <h3 class="billingInformation">Billing Details</h3>
     <div></div>
     <h3>Shipping Details</h3>
     <div></div>
