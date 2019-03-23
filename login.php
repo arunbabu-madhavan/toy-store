@@ -53,7 +53,7 @@ session_start();
                               <li class="new-customer-fact">Track new orders</li>
                               <li class="new-customer-fact">Save items to your wish list</li>
                           </ul>
-                          <center><a href="/login.php?action=create_account"><button class="button button--primary">Create Account</button></a></center>
+                          <center><a href="register.php?action=create_account"><button class="button button--primary">Create Account</button></a></center>
                       </div>
                   </div>
               </div>
