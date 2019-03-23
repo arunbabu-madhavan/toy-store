@@ -1646,6 +1646,8 @@ footer {
     }
   }
 
-  #accordion {
-    position: relative;
+  .main {
+    position: relative;margin-top: 100pt;
+    padding-top: 2%;
+    display: float;
   }

@@ -21,4 +21,31 @@ $(document).ready(function () {
     }
   });
 
+  $("#pickBilling").click(function (e) {
+    var answer = $('input[name=method]:checked').val();
+    if (answer === "guest") {
+      $('#accordion').accordion('option', 'active', 2);
+    } else if (answer === "register") {
+      window.location.href = "register.php";
+    } else {
+      window.location.href = "login.php";
+    }
+  });
+
+  $("#pickAddress").click(function (e) {
+    var answer = $('input[name=method]:checked').val();
+    if (answer === "guest") {
+      $('#accordion').accordion('option', 'active', 3);
+    } else if (answer === "register") {
+      window.location.href = "register.php";
+    } else {
+      window.location.href = "login.php";
+    }
+  });
+
+  $("#doneCheckout").click(function (e) {
+    var answer = $('input[name=method]:checked').val();
+    //ajax here.
+  });
+
 });
