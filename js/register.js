@@ -9,7 +9,7 @@ $(document).ready(function () {
             $('#errorinfo').text('Please enter password.');
         } else if (!email.match("@")) {
             $('#errorinfo').text('Please enter valid email.');
-        } else if (!password.match(/[A-Za-z]/) || !password.match(/[0-9]/) || !(password.length > 5)) {
+        } else if (!password.match(/[A-Za-z]/) || !password.match(/[0-9]/) || !password.length > 5) {
             $('#errorinfo').text('Please enter valid password. Must contain one or more uppercase letters and lowercase letters, and at least 6 letters.');
         } else if (password != password_chk) {
             $('#errorinfo').text('Please confirm your password again.');
