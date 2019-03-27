@@ -1,7 +1,7 @@
 <?php
     include 'dbconfig.php';
     $productID = isset($_GET["id"]) ? intval($_GET["id"]) : 0;
-    
+
     $params = array();
     //Connect to mysql server
     $conn = mysqli_connect("$serverName:$port",$username,$password);
@@ -14,19 +14,19 @@
     mysqli_select_db($conn,$databaseName);
     //Construct the query
     $query = "SELECT *
-    FROM Product 
-    WHERE Product.ID = $productID";
-    
+    FROM product
+    WHERE product.ID = $productID";
+
     //Execute the query
      $result = mysqli_query($conn,$query);
      $row;
      $addMode = (mysqli_num_rows($result) == 0);
 
-     
+
         //Construct the query
         $queryCategory = "SELECT Category.Name,Category.ID, productcategory.ProductID
-        FROM Category 
-        LEFT JOIN ProductCategory 
+        FROM Category
+        LEFT JOIN ProductCategory
         ON Category.ID = ProductCategory.CategoryID AND ProductCategory.ProductID = $productID";
 
         //Execute the query
@@ -80,25 +80,25 @@
         <div class="productInfo">
             <input type='hidden' id='product-id' name='product-id' value="<?php echo !$addMode ? $row['ID'] : 0 ?>"/>
 
-            <div class="group">      
+            <div class="group">
               <input type="text" id='product-name' name="product-name" value="<?php echo !$addMode ? $row['Name'] : '' ?>">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Product Name</label>
             </div>
-            <div class="group">      
+            <div class="group">
               <input type="text" id='product-price' name="product-price" value="<?php echo !$addMode ? $row['Price'] : '' ?>">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Price</label>
             </div>
-            <div class="group">      
+            <div class="group">
               <input type="text" id='product-qty' name="product-qty" value="<?php echo !$addMode ? $row['Quantity'] : '' ?>">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label>Quantity</label>
             </div>
-            <div class='form-input-header'>      
+            <div class='form-input-header'>
               <label>Categories</label>
               <div class="categories-box">
               <?php
@@ -115,7 +115,7 @@
                 ?>
               </div>
             </div>
-            <div class='form-input-header'>      
+            <div class='form-input-header'>
               <label>Description</label>
               <textarea name="product-desc" id='product-desc' autocomplete="off" rows="10" cols="50" placeholder="Enter Description...."><?php echo !$addMode ? $row['Description'] : '' ?></textarea>
             </div>
@@ -137,7 +137,7 @@
 </body>
 </html>
 
-<?php 
+<?php
   //close connection
   mysqli_close($conn);
 ?>
