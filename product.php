@@ -20,7 +20,9 @@ FROM product
 WHERE product.ID = $productID";
 
 $product = mysqli_query($conn,$query);
-
+//var_dump($product);
+$row = mysqli_fetch_assoc($product);
+$productDetail = json_encode($row);
 
 ?>
 <!DOCTYPE html>
@@ -32,18 +34,12 @@ $product = mysqli_query($conn,$query);
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <script src="js/product.js"></script>
+    <script src="js/index.js"></script>
   </head>
   <body>
     <?php include 'header.php' ?>
-    <main>
+    <div class="content">
       <div class="categoryPath">
-        <?php
-        $rows = array();
-        foreach($product as $val){
-          $rows[] = $val;
-        }
-        echo json_encode($rows);
-        ?>
         Home > Board Games > Assorted Board Games.
       </div>
       <br>
@@ -51,41 +47,45 @@ $product = mysqli_query($conn,$query);
         <div class="row">
 
           <div class="col-md-1">
-            <img src="https://www.yourhtmlsource.com/images/media/banjotooiebig.jpg" style="height:100%;width:100%;box-shadow:1px;border-style:solid;border-width:1px; " alt="product thumbnail"><br>
-            <img src="https://www.yourhtmlsource.com/images/media/banjotooiebig.jpg" style="height:100%;width:100%;box-shadow:1px;border-style:solid;border-width:1px; " alt="product thumbnail"><br>
+
           </div>
           <div class="col-md-4">
-            <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.tLLRgOO1NYUHVrhVpUx27AHaHa%26pid%3D15.1&f=1" style="height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px; "
-            alt="product picture"><br>
+            <?php
+              echo "<img src='images/".$row["Picture"]."' style='height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px;'
+              alt='product picture' />";
+              echo "<br>";
+            ?>
           </div>
           <div class="col-md-4">
             <div class="row">
-              <h4>This is the title.<h4>
+              <?php
+              var_dump($row);
+              echo "<h4>".$row['Name']."</h4>";
+              echo $row['Description'];
+              echo "<br>";
+              echo  "Quantity : ".$row['Quantity'];
+              echo "<br>";
+              echo "Price : ".$row['Price'];
+
+              echo $productDetail;
+             ?>
             </div>
-            <div class="row">
-              <?php echo $product['Description']; ?>
-              <br>
-            </div>
-            <div class="row">
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>In dictum quam eu neque condimentum aliquam.</li>
-                <li>Donec fringilla orci et pretium pellentesque.</li>
-                <li>Duis a dolor in urna fringilla iaculis.</li>
-                <li>Morbi finibus leo vel lectus feugiat maximus.</li>
-                <li>Quisque accumsan urna a accumsan congue.</li>
-              </ul>
-            </div>
+
           </div>
           <div class="col-md-3">
-            <div class="btn btn-primary btn-md btn-block">Add to cart</div><br>
+          <div class="productCart">
+		                			<div class="productCartImg"><img src="images/addcart.png"></div>
+		                			<div class="productCartSpan">Add to Cart</div>
+                                    <input type="button" value=""
+                                                            onclick='addToCart(JSON.parse(<?php echo $productDetail ?>))'>
+		                      </div><br>
             <div class="btn btn-warning btn-lg btn-block">Checkout</div>
           </div>
         </div>
 
       </div>
 
-    </main>
+</div>
   <?php include 'footer.html' ?>
 
     <!-- Latest compiled and minified CSS -->

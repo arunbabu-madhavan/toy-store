@@ -25,7 +25,7 @@ function loadFeaturedBrandsFilter(){
          {id:11,name:'Pokemon'},
          {id:12,name:'Star Wars'},
          {id:13,name:'Transformers'}];
-    
+
     const item = ({id,name}) => $('#brand-filter').html()
                                 .replace('$brand',name)
                                 .replace('$filter',id);
