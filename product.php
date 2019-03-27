@@ -22,7 +22,12 @@ WHERE product.ID = $productID";
 $product = mysqli_query($conn,$query);
 //var_dump($product);
 $row = mysqli_fetch_assoc($product);
-$productDetail = json_encode($row);
+$row1 = $row;
+unset($row1['Description']);
+$productDetail = json_encode($row1);
+$productDetail = str_replace(array("\\r", "\\n"), '', $productDetail);
+$productDetail = str_replace("\"", "'", $productDetail);
+
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +39,6 @@ $productDetail = json_encode($row);
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <script src="js/product.js"></script>
-    <script src="js/index.js"></script>
   </head>
   <body>
     <?php include 'header.php' ?>
@@ -77,7 +81,8 @@ $productDetail = json_encode($row);
 		                			<div class="productCartImg"><img src="images/addcart.png"></div>
 		                			<div class="productCartSpan">Add to Cart</div>
                                     <input type="button" value=""
-                                                            onclick='addToCart(JSON.parse(<?php echo $productDetail ?>))'>
+                                                            onclick="addToCart(<?php echo $productDetail ?>)"
+                                                            >
 		                      </div><br>
             <div class="btn btn-warning btn-lg btn-block">Checkout</div>
           </div>
