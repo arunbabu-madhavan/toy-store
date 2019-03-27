@@ -57,7 +57,6 @@
             }
 
     //Execute the query
-    echo $query;
     $result = mysqli_query($conn,$query);
     $itemStart = 0;
     if(isset($params['page']))
