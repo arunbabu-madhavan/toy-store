@@ -78,6 +78,7 @@
             $json_array[] = $row;
         $i++;
     }
+    
     $json_array[] =  mysqli_num_rows($result);
     $json_array[] =  $TotalPages;
 

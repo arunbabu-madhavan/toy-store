@@ -14,8 +14,8 @@
     mysqli_select_db($conn,$databaseName);
     //Construct the query
     $query = "SELECT *
-    FROM Product 
-    WHERE Product.ID = $productID";
+    FROM product 
+    WHERE product.ID = $productID";
     
     //Execute the query
      $result = mysqli_query($conn,$query);
@@ -24,10 +24,10 @@
 
      
         //Construct the query
-        $queryCategory = "SELECT Category.Name,Category.ID, productcategory.ProductID
-        FROM Category 
-        LEFT JOIN ProductCategory 
-        ON Category.ID = ProductCategory.CategoryID AND ProductCategory.ProductID = $productID";
+        $queryCategory = "SELECT category.Name,category.ID, productcategory.ProductID
+        FROM category 
+        LEFT JOIN productCategory 
+        ON category.ID = productCategory.CategoryID AND productCategory.ProductID = $productID";
 
         //Execute the query
         $categories = mysqli_query($conn,$queryCategory);

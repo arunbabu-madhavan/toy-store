@@ -23,15 +23,7 @@ session_start();
 </head>
 <body>
   <?php include 'header.php';?>
-  <?php
-if ($_SESSION["route"] == "login") {
-    include 'login.php';
-} elseif ($_SESSION["route"] == "checkout") {
-    include 'checkout.php';
-} else {
-    include 'main.php';
-}
-?>
+  
 
 <br><br><br><br><br>
 
