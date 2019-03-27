@@ -26,12 +26,12 @@
 
     //Select database
     mysqli_select_db($conn,$databaseName);
-    $query = "SELECT DISTINCT product.Name, product.ID, product.Picture, product.Price FROM product 
+    $query = "SELECT DISTINCT product.Name, product.ID, product.Picture, product.Price FROM product
                 where product.IsDelete = 0 ";
 
-    $queryId = "SELECT product.ID FROM product 
-                inner join productcategory 
-                on productcategory.ProductID = product.ID 
+    $queryId = "SELECT product.ID FROM product
+                inner join productcategory
+                on productcategory.ProductID = product.ID
                 where product.IsDelete = 0 ";
 
     if($search != ""){
@@ -39,12 +39,12 @@
     }
 
     if($newArrivals)
-     {  
+     {
         $query = $query." and product.ID in (".$queryId." and productcategory.categoryid = 1) ";
      }
-    
+
      if($trending)
-     {  
+     {
         $query = $query." and product.ID in (".$queryId." and productcategory.categoryid = 2) ";
      }
      if($hotSellers){
@@ -55,8 +55,9 @@
             {
                 $query = $query." and product.ID in (".$queryId." and productcategory.categoryid = ".$params['filter'][$i].") ";
             }
-   
+
     //Execute the query
+    echo $query;
     $result = mysqli_query($conn,$query);
     $itemStart = 0;
     if(isset($params['page']))
@@ -66,9 +67,9 @@
     }
     else
         $itemEnd = mysqli_num_rows($result);
-    
+
     $TotalPages = ceil(mysqli_num_rows($result) / (float)$page_count);
-    
+
     $json_array = array();
     $i=0;
 
@@ -82,6 +83,6 @@
     $json_array[] =  $TotalPages;
 
 
-    echo json_encode($json_array); 
-        
+    echo json_encode($json_array);
+
 ?>
