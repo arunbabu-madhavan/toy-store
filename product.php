@@ -1,5 +1,27 @@
 <?php
 session_start();
+
+include 'dbconfig.php';
+$productID = isset($_GET["id"]) ? intval($_GET["id"]) : 0;
+
+$params = array();
+//Connect to mysql server
+$conn = mysqli_connect("$serverName:$port",$username,$password);
+
+if(mysqli_connect_errno()){
+      die("Databse connection failed".mysqli_connect_error());
+}
+
+//Select database
+mysqli_select_db($conn,$databaseName);
+//Construct the query
+$query = "SELECT *
+FROM product
+WHERE product.ID = $productID";
+
+$product = mysqli_query($conn,$query);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,18 +37,25 @@ session_start();
     <?php include 'header.php' ?>
     <main>
       <div class="categoryPath">
+        <?php
+        $rows = array();
+        foreach($product as $val){
+          $rows[] = $val;
+        }
+        echo json_encode($rows);
+        ?>
         Home > Board Games > Assorted Board Games.
       </div>
       <br>
       <div class="container">
         <div class="row">
-        
+
           <div class="col-md-1">
             <img src="https://www.yourhtmlsource.com/images/media/banjotooiebig.jpg" style="height:100%;width:100%;box-shadow:1px;border-style:solid;border-width:1px; " alt="product thumbnail"><br>
             <img src="https://www.yourhtmlsource.com/images/media/banjotooiebig.jpg" style="height:100%;width:100%;box-shadow:1px;border-style:solid;border-width:1px; " alt="product thumbnail"><br>
           </div>
           <div class="col-md-4">
-            <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.tLLRgOO1NYUHVrhVpUx27AHaHa%26pid%3D15.1&f=1" style="height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px; " 
+            <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.tLLRgOO1NYUHVrhVpUx27AHaHa%26pid%3D15.1&f=1" style="height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px; "
             alt="product picture"><br>
           </div>
           <div class="col-md-4">
@@ -34,7 +63,7 @@ session_start();
               <h4>This is the title.<h4>
             </div>
             <div class="row">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut mollis lorem. Quisque vitae turpis non est lobortis placerat. Etiam maximus maximus viverra. Fusce ut purus suscipit, consequat nunc scelerisque, dignissim ipsum. Fusce ac purus efficitur, bibendum dui sit amet, varius mi. Phasellus nec velit convallis, ultrices metus at, venenatis justo. Etiam eu pellentesque massa, vitae lobortis velit. Nulla laoreet finibus massa sit amet dapibus. Vestibulum a neque a massa mattis dictum. Quisque iaculis scelerisque odio eu suscipit. Vivamus et nulla rhoncus, pharetra lacus nec, venenatis felis. Vivamus eu risus et lacus faucibus feugiat at vitae tortor. Nam nec vulputate lectus. Praesent viverra urna sollicitudin, lobortis quam a, iaculis tortor. Etiam ut commodo orci, sit amet cursus orci. Etiam enim sem, faucibus eu cursus eget, rhoncus in neque. 
+              <?php echo $product['Description']; ?>
               <br>
             </div>
             <div class="row">

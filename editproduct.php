@@ -27,7 +27,7 @@
         $queryCategory = "SELECT category.Name,category.ID, productcategory.ProductID
         FROM category 
         LEFT JOIN productCategory 
-        ON category.ID = productCategory.CategoryID AND productCategory.ProductID = $productID";
+        ON category.ID = productCategory.CategoryID AND ProductCategory.ProductID = $productID";
 
         //Execute the query
         $categories = mysqli_query($conn,$queryCategory);
