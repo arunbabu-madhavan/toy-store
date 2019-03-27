@@ -15,7 +15,7 @@ var count =0,total = 0.0;
 function addToCart(product){
     count++;
     total += parseFloat(product.Price);
-    
+    debugger;
     const cartItemId =`#cart-${product.ID}`;
 
     if($(cartItemId).length  == 0)
@@ -52,9 +52,9 @@ function addToCart(product){
                         }
                         $('.floating-cart-items').find(cartItemId).remove();
                         $('#cart-box-icon > span').text(count > 0 ? count : '');
-                       
+
                         updateCartText();
-                        
+
                     });
 }
 
@@ -113,17 +113,17 @@ function bindhoverevents(){
         $(this).next('.edit-box').css("visibility",'visible');
         $(this).css("background",'#ebebeb');
     });
-    
+
     $('.edit-box').mouseover(function(){
         $(this).css("visibility",'visible');
         $(this).prev().css("background",'#ebebeb');
     });
-    
+
     $('.edit-box').mouseleave(function(){
         $(this).css("visibility",'hidden');
         $(this).prev().css("background",'#fff');
     });
-  
+
     $('.productrow .product-block').mouseleave(function(){
         $(this).next('.edit-box').css("visibility",'hidden');
         $(this).css("background",'#fff');

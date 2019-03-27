@@ -41,12 +41,7 @@ CREATE TABLE productcategory (
 DELETE FROM productcategory;
 DELETE FROM product;
 
-INSERT INTO product (Name,Description,Picture,Price,Quantity,IsDelete) VALUES ('Movie Masterpiece Captain Marvel Diecast Collectible Figure',"The incredibly detailed doll features realistic, rooted hair, and Carol Danvers's classic costume.
-The figure includes:
-- Posable arms, legs and head
-- Painted face
-- Costume features moulded and fabric details
-- Made from plastic",'marvel_toy1.jpg',265.99,4,0);
+INSERT INTO product (Name,Description,Picture,Price,Quantity,IsDelete) VALUES ('Movie Masterpiece Captain Marvel Diecast Collectible Figure',"The incredibly detailed doll features realistic, rooted hair, and Carol Danvers's classic costume. The figure includes: - Posable arms, legs and head - Painted face - Costume features moulded and fabric details - Made from plastic",'marvel_toy1.jpg',265.99,4,0);
 
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 1);

@@ -7,10 +7,10 @@
     <title>Toy Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-       
+
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <link rel="stylesheet" type="text/css" href="css/carousel.css">
-   
+
     <script src="js/index.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@
      <div class="content">
         <div class="filter-content">
             <h4>FEATURED BRANDS</h4>
-            <template id='brand-filter'>   
+            <template id='brand-filter'>
                 <li class='brand-link'><a href="search.php?search=&filter=$filter&page=1">$brand</a></li>
             </template>
         </div>
@@ -49,7 +49,7 @@
                         <label class="goto-first" for="slides_1"></label>
                         <label class="goto-last" for="slides_6"></label>
                     </div>
-                    <div class="navigation"> 
+                    <div class="navigation">
                         <div>
                           <label for="slides_1"></label>
                           <label for="slides_2"></label>
@@ -72,7 +72,7 @@
         </div>
     </div>
     <?php include 'footer.html'?>
-    <template id='new-product-block'>   
+    <template id='new-product-block'>
                 <div class="product-block">
                     <a href="product.php?id=$productId">
                         <div class="productImage">
@@ -89,9 +89,9 @@
                         <div class="productCart">
 		                			<div class="productCartImg"><img src="images/addcart.png"></div>
 		                			<div class="productCartSpan">Add to Cart</div>
-                                    <input type="button" value="" 
+                                    <input type="button" value=""
                                                             onclick='addToCart($product)'>
-		                </div>
+		                      </div>
                     </div>
                 </div>
             </template>
