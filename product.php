@@ -9,63 +9,61 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/site.css">
-    <script src="js/index.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/product.js"></script>
   </head>
   <body>
     <?php include 'header.php' ?>
-
     <main>
-    <div class="container">
-      <div class="login">
-        <h1 class="page-heading">ToyWiz Login</h1>
-        <style>.loginSmall {font: 14px Gotham Light; margin-top: -10px; margin-bottom: 10px;} .loginSmall a {text-decoration: underline; color: ##0668a5; font-family: Gotham Medium;}</style>
-        <div class="loginSmall" style="display: none;">If you are looking for the ToyWiz Buy List, please click <a href="https://tools.toywiz.com/buylist/">here</a>.<br/>&nbsp;</div>
-
-            <div class="login-row">
-              <form class="login-form form" action="/login.php?action=check_login" method="post">
-                  <div class="form-field">
-                      <label class="form-label" for="login_email">Email Address:</label>
-                      <input class="form-input" name="login_email" id="login_email" type="email">
-                      <div id="emailInfo"></div>
-                  </div>
-                  <div class="form-field">
-                      <label class="form-label" for="login_pass">Password:</label>
-                      <input class="form-input" id="login_pass" type="password" name="login_pass">
-                      <div id="passInfo"></div>
-                  </div>
-                  <div class="form-actions">
-                      <input type="submit" class="button button--primary" value="Login"><br/>
-                      <a class="forgot-password" href="/login.php?action=reset_password">Forgot your password?</a>
-                  </div>
-              </form>
-              <div class="new-customer">
-                  <div class="panel">
-                      <div class="panel-header">
-                          <h2 class="panel-title">New Customer?</h2>
-                      </div>
-                      <div class="panel-body">
-                          <p class="new-customer-intro">Create an account with us and you&#x27;ll be able to:</p>
-                          <ul class="new-customer-fact-list">
-                              <li class="new-customer-fact">Check out faster</li>
-                              <li class="new-customer-fact">Save multiple shipping addresses</li>
-                              <li class="new-customer-fact">Access your order history</li>
-                              <li class="new-customer-fact">Track new orders</li>
-                              <li class="new-customer-fact">Save items to your wish list</li>
-                          </ul>
-                          <center><a href="/login.php?action=create_account"><button class="button button--primary">Create Account</button></a></center>
-                      </div>
-                  </div>
-              </div>
+      <div class="categoryPath">
+        Home > Board Games > Assorted Board Games.
+      </div>
+      <br>
+      <div class="container">
+        <div class="row">
+        
+          <div class="col-md-1">
+            <img src="https://www.yourhtmlsource.com/images/media/banjotooiebig.jpg" style="height:100%;width:100%;box-shadow:1px;border-style:solid;border-width:1px; " alt="product thumbnail"><br>
+            <img src="https://www.yourhtmlsource.com/images/media/banjotooiebig.jpg" style="height:100%;width:100%;box-shadow:1px;border-style:solid;border-width:1px; " alt="product thumbnail"><br>
+          </div>
+          <div class="col-md-4">
+            <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.tLLRgOO1NYUHVrhVpUx27AHaHa%26pid%3D15.1&f=1" style="height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px; " 
+            alt="product picture"><br>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <h4>This is the title.<h4>
+            </div>
+            <div class="row">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut mollis lorem. Quisque vitae turpis non est lobortis placerat. Etiam maximus maximus viverra. Fusce ut purus suscipit, consequat nunc scelerisque, dignissim ipsum. Fusce ac purus efficitur, bibendum dui sit amet, varius mi. Phasellus nec velit convallis, ultrices metus at, venenatis justo. Etiam eu pellentesque massa, vitae lobortis velit. Nulla laoreet finibus massa sit amet dapibus. Vestibulum a neque a massa mattis dictum. Quisque iaculis scelerisque odio eu suscipit. Vivamus et nulla rhoncus, pharetra lacus nec, venenatis felis. Vivamus eu risus et lacus faucibus feugiat at vitae tortor. Nam nec vulputate lectus. Praesent viverra urna sollicitudin, lobortis quam a, iaculis tortor. Etiam ut commodo orci, sit amet cursus orci. Etiam enim sem, faucibus eu cursus eget, rhoncus in neque. 
+              <br>
+            </div>
+            <div class="row">
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>In dictum quam eu neque condimentum aliquam.</li>
+                <li>Donec fringilla orci et pretium pellentesque.</li>
+                <li>Duis a dolor in urna fringilla iaculis.</li>
+                <li>Morbi finibus leo vel lectus feugiat maximus.</li>
+                <li>Quisque accumsan urna a accumsan congue.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="btn btn-primary btn-md btn-block">Add to cart</div><br>
+            <div class="btn btn-warning btn-lg btn-block">Checkout</div>
           </div>
         </div>
+
       </div>
+
     </main>
   <?php include 'footer.html' ?>
 
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
