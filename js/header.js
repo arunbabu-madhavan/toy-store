@@ -4,6 +4,7 @@ $(()=>{
         if(count !=0)
             $('.floating-cart').toggle();
     });
+    
     getCartFromSession();
 });
 

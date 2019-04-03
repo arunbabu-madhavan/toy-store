@@ -21,21 +21,37 @@ function filterResults(keyParam,add,value){
 
 function modifyQueryString(keyParam,add,value,url,pushState){
     var newURL = url || window.location.href;
-    var queryStringparameter = `&${keyParam}=${value}`;
+    var filters = newURL.split("?")[1].split("&");
+    var queryStringparameter = `${keyParam}=${value}`;
     if(add)
     {
-         newURL = newURL.replace(queryStringparameter,'')
-                    .replace(`${keyParam}=${value}&`,'')
-         .replace(`${keyParam}=${value}`,'')         ;
-         newURL = newURL + queryStringparameter;
+        var exists = false;
+
+        filters.forEach(function(filter){
+           if(filter == queryStringparameter){
+            exists = true;
+           }
+        });
+
+        if(!exists)
+            filters.push(queryStringparameter);
+
+        newURL = newURL.split("?")[0] +'?' +filters.join("&");
+       
+     
          if(pushState)
             history.pushState({path:newURL}, null, newURL);
     }
     else
-    {   
-         newURL = newURL.replace(queryStringparameter,'')
-         .replace(`${keyParam}=${value}&`,'')
-         .replace(`${keyParam}=${value}`,'');
+    {  
+        var exists = false;
+
+        filters.forEach(function(filter,idx,object){
+           if(filter == queryStringparameter){
+            object.splice(idx,1);
+           }
+        }); 
+        newURL = newURL.split("?")[0] +'?' +filters.join("&");
 
          if(pushState)
              history.pushState({path:newURL}, null, newURL);
@@ -50,7 +66,6 @@ function loadSearchResults(){
     $('.search-result').hide();
     $('.loading').show();
     $('.products-grid > div.productrow').empty();
-    
     $.ajax({
         url:'filter.php'+window.location.search,
         type:"GET",

@@ -1,6 +1,5 @@
 
 <?php
-  session_start();
   $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
 ?>
 <script src="js/header.js"></script>
