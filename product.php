@@ -33,64 +33,62 @@ $productDetail = str_replace("\"", "'", $productDetail);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Toy Store</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/site.css">
-    <script src="js/product.js"></script>
-  </head>
-  <body>
-    <?php include 'header.php' ?>
-    <div class="content">
-      <div class="categoryPath">
-        Home > Board Games > Assorted Board Games.
-      </div>
-      <br>
-      <div class="container">
-        <div class="row">
+  <title>Toy Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/site.css">
+  <script src="js/product.js"></script>
+</head>
+<body>
+  <?php include 'header.php' ?>
+  <div class="content">
+    <div class="categoryPath">
+      Home > Board Games > Assorted Board Games.
+    </div>
+    <br>
+    <div class="container">
+      <div class="row">
 
-          <div class="col-md-1">
+        <div class="col-md-1">
 
-          </div>
-          <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+          <?php
+            echo "<img src='images/".$row["Picture"]."' style='height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px;'
+            alt='product picture' />";
+            echo "<br>";
+          ?>
+        </div>
+        <div class="col-md-4">
+          <div class="row">
             <?php
-              echo "<img src='images/".$row["Picture"]."' style='height:40%;width:40%;box-shadow:1px;border-style:solid;border-width:1px;'
-              alt='product picture' />";
-              echo "<br>";
+            var_dump($row);
+            echo "<h4>".$row['Name']."</h4>";
+            echo $row['Description'];
+            echo "<br>";
+            echo "Quantity : ".$row['Quantity'];
+            echo "<br>";
+            echo "Price : ".$row['Price'];
+
+            echo $productDetail;
             ?>
           </div>
-          <div class="col-md-4">
-            <div class="row">
-              <?php
-              var_dump($row);
-              echo "<h4>".$row['Name']."</h4>";
-              echo $row['Description'];
-              echo "<br>";
-              echo  "Quantity : ".$row['Quantity'];
-              echo "<br>";
-              echo "Price : ".$row['Price'];
 
-              echo $productDetail;
-             ?>
-            </div>
-
-          </div>
-          <div class="col-md-3">
-          <div class="productCart">
-		                			<div class="productCartImg"><img src="images/addcart.png"></div>
-		                			<div class="productCartSpan">Add to Cart</div>
-                                    <input type="button" value=""
-                                                            onclick="addToCart(<?php echo $productDetail ?>)"
-                                                            >
-		                      </div><br>
-            <div class="btn btn-warning btn-lg btn-block">Checkout</div>
-          </div>
         </div>
-
+        <div class="col-md-3">
+        <div class="productCart">
+                        <div class="productCartImg"><img src="images/addcart.png"></div>
+                        <div class="productCartSpan">Add to Cart</div>
+                                  <input type="button" value=""
+                                                          onclick="addToCart(<?php echo $productDetail ?>)"
+                                                          >
+                        </div><br>
+          <div class="btn btn-warning btn-lg btn-block">Checkout</div>
+        </div>
       </div>
-
-</div>
+    </div>
+  </div>
   <?php include 'footer.html' ?>
 
     <!-- Latest compiled and minified CSS -->

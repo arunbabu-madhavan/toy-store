@@ -232,7 +232,6 @@ INSERT INTO product (Name,Description,Picture,Price,Quantity,IsDelete) VALUES ('
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 3);
 
-
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 14);
 
@@ -253,8 +252,6 @@ INSERT INTO productcategory(ProductID,CategoryID) values
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 11);
 
-
-
 INSERT INTO product (Name,Description,Picture,Price,Quantity,IsDelete) VALUES ('Gundam F91 Mobile Suit Variation Vigna-Ghina II RE/100 Model Kit ',"A Mobile Suit Variation (MSV) of Vigna-Ghina from Gundam F91! New parts have been created for the body and includes new head, trigger finger parts, wing nozzles, and weapons like shot lancer.
 
 Runner x 15, sticker, instruction manual.
@@ -263,12 +260,28 @@ Runner x 15, sticker, instruction manual.
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 3);
 
-
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 14);
-
 
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 13);
 
+CREATE TABLE `test`.`User` ( `userId` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(40) NOT NULL , 
+`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL , `email` VARCHAR(40) NOT NULL , 
+PRIMARY KEY (`userId`)) ENGINE = InnoDB;
 
+CREATE TABLE `test`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT, 
+`completed` BOOLEAN NOT NULL , PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
+
+ALTER TABLE `Sale` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+CREATE TABLE `test`.`SaleProduct` ( `saleId` INT NOT NULL , `productId` INT NOT NULL, `quantity` INT NOT NULL ) ENGINE = InnoDB;
+ALTER TABLE `SaleProduct` ADD  FOREIGN KEY (`saleId`) REFERENCES `Sale`(`saleId`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `SaleProduct` ADD  FOREIGN KEY (`productId`) REFERENCES `Product`(`ID`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Sydney St James', '1155 Union Circle #311277', 'Denton', '76203', 'ssJames@unt.edu');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Matthew White', 'One Microsoft Way', 'Redmon', '98052', 'mwhite@msft.com');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Jennifer Tran', '3150 Sabre Drive Southlake', 'Southlake', '76092', 'jtran@sabre.com');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Nick Fealy', '3739 N Steele Blvd, Ste 300', 'Fayetteville', '72703', 'nfealy@supplypike.com');
+
+INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '1', NULL, '1');
+INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '5', NULL, '0');

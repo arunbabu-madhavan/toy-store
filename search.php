@@ -14,7 +14,7 @@
         mysqli_select_db($conn,$databaseName);
                 
         //Construct the query
-        $query = "SELECT HeadCategory.Name AS 'HeadCategory',Category.Name,Category.ID 
+        $query = "SELECT HeadCategory.Name AS HeadCategory,Category.Name,Category.ID 
                   FROM Category 
                   INNER JOIN HeadCategory 
                   ON Category.HeadCategoryID = HeadCategory.ID 
