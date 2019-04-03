@@ -7,7 +7,7 @@ class User{
     // var $rank;
 }
 session_start();
-$user = unserialize($_SESSION['userName']);
+$user = unserialize($_SESSION['user']); //Table: User, not username
 
 ?>
 
