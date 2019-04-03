@@ -1,3 +1,22 @@
+-- DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+ id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, email varchar(50) NOT NULL, password varchar(50) NOT NULL, rank int(11) NOT NULL);
+
+CREATE TABLE ORDERS
+(ORDERID INT(11) NOT NULL,
+USERID INT(11) NOT NULL,
+ITEMID INT(11) NOT NULL,
+COUNT INT(11) NOT NULL,
+ORDER_DATE DATETIME NOT NULL);
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` VALUES (1,'admin@admin','admin',2);
+UNLOCK TABLES;
+--
 CREATE TABLE HeadCategory ( ID int NOT NULL AUTO_INCREMENT, Name varchar(50) NOT NULL, PRIMARY KEY (ID) );
 
 INSERT INTO HeadCategory (Name) VALUES ('Status');
