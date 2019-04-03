@@ -34,7 +34,7 @@
             <div class="floating-cart-img">
                     <img src="images/$imageFile" alt="image of $productName">
             </div>
-            <a href="/product.php?id=$productId">$productName</a><br>
+            <a href="product.php?id=$productId">$productName</a><br>
             <span class="floating-cart-price">$$price</span>(<span class='qty'>1</span>)
             <div class="floating-cart-remove">x</div>
             <div></div>

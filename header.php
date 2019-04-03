@@ -1,5 +1,4 @@
 
-
 <?php
    $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
    $_SESSION["isAdmin"] = true;

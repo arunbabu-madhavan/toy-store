@@ -4,6 +4,7 @@ $(()=>{
         if(count !=0)
             $('.floating-cart').toggle();
     });
+    getCartFromSession();
 });
 
 String.prototype.replaceAll = function(search, replacement) {
@@ -13,13 +14,31 @@ String.prototype.replaceAll = function(search, replacement) {
 
 var count = 0, total = 0.0;
 
+function getCartFromSession(){
+    $.ajax({
+        url:'cartsession.php',
+        type:'GET',
+        dataType:'json',
+        success:(cartItems)=>{
+            $.each(cartItems ,(idx, cartItem) => {
+                for(var i=0;i<cartItem.qty;i++)
+                    addToCart(cartItem,false);
+
+            });
+        }
+    });
+}
+
+const ADD = 1;
+const REMOVE = 2;
+
+
 //handle clicking add to cart button.
-function addToCart(product){
+function addToCart(product,updateSession = true){
   count++;
   total += parseFloat(product.Price);
-  debugger;
   const cartItemId =`#cart-${product.ID}`;
-
+  var qty  = 1;
   if($(cartItemId).length  == 0)
   {
       var item =  $('#floating-cart-item').html()
@@ -33,12 +52,12 @@ function addToCart(product){
   }
   else
   {
-      var qty = $(cartItemId).find('.qty').text();
+      qty = $(cartItemId).find('.qty').text();
       $(cartItemId).find('.qty').text(++qty);
   }
   updateCartText();
 
-  $(cartItemId+' .floating-cart-remove')
+  $(cartItemId +' .floating-cart-remove')
               .click(function(){
                       if($('.floating-cart-items')
                       .find(cartItemId).length > 0)
@@ -46,6 +65,8 @@ function addToCart(product){
                           var qty =  parseFloat($('.floating-cart-items')
                                               .find(cartItemId).find('.qty')
                                               .text());
+                    updateCartInSession(product,qty,qty,REMOVE);
+
                           total -= (parseFloat($('.floating-cart-items')
                                   .find(cartItemId)
                                   .find('.floating-cart-price')
@@ -56,8 +77,37 @@ function addToCart(product){
                       $('#cart-box-icon > span').text(count > 0 ? count : '');
 
                       updateCartText();
-
                   });
+    
+    if(updateSession)
+        updateCartInSession(product,qty,1,ADD);
+}
+
+function updateCartInSession(product,qty,qtyToupdate,operation){
+//    console.log(product);
+    var cartItem = {
+        ID:product.ID,
+        Picture:product.Picture,
+        Name:product.Name,
+        Price:product.Price,
+        qty:qty,
+    };
+    $.ajax(
+        {
+        url:'cartsession.php',
+        data: {
+            cartItem:JSON.stringify(cartItem),
+            updateQty:qtyToupdate,
+            operation:operation
+        },
+        type:'POST',
+        success:(data)=>{
+            console.log(data);
+        },
+        error:(data)=>{
+            console.log('error');
+        }
+        });
 }
 
 //display cart item count and hide overlay cart if it's empty

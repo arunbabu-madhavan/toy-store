@@ -25,7 +25,6 @@ if (!$con)
     echo "Failed to connect to MySQL: ";
 }
 
-
     $sql = "update user set password = '$password' where id = $id";
 
     $result = mysqli_query($con,$sql) or die('MySQL query error');
