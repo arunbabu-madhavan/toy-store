@@ -267,7 +267,7 @@ INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 13);
 
 CREATE TABLE `toystore`.`User` ( `userId` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(40) NOT NULL , 
-`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL , `email` VARCHAR(40) NOT NULL , 
+`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL , `email` VARCHAR(40) NOT NULL , `password` VARCHAR(40) NOT NULL ,
 PRIMARY KEY (`userId`)) ENGINE = InnoDB;
 
 CREATE TABLE `toystore`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT, 
