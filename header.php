@@ -51,8 +51,7 @@
       echo '<div >';
       echo    '<a href="editproduct.php?id=0"><h3>+</h3> ADD NEW PRODUCT</a>';
       echo '</div>';
-      }
-      ?>
+   }?>
 </div>
 <div class="floating-cart">
    <span class="floating-cart-header"></span>
