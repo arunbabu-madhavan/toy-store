@@ -529,7 +529,7 @@ header>div>* {
 }
 
 .floating-cart {
-  position: absolute;
+  position: fixed;
   display: none;
   width: 320px;
   background: #fff;

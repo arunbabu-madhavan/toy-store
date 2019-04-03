@@ -41,10 +41,7 @@ $productDetail = str_replace("\"", "'", $productDetail);
 <body>
   <?php include 'header.php' ?>
   <div class="content">
-    <div class="categoryPath">
-      Home > Board Games > Assorted Board Games.
-    </div>
-    <br>
+  
     <div class="container">
       <div class="row">
         <div class="col-md-4">
