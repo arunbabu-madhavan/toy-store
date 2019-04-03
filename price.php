@@ -16,7 +16,7 @@ if($id!="-1") {
     $_SESSION['cart'] = serialize($cart);
 }
 try {
-    $db = new PDO('mysql:host=localhost;dbname=test', "root", "root");
+    $db = new PDO('mysql:host=localhost;dbname=toystore', "root", "root");
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
     $db = null;

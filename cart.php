@@ -23,7 +23,7 @@ $keys = array_keys($cart);
 
 
 try {
-    $db = new PDO('mysql:host=localhost;dbname=test', "root", "root");
+    $db = new PDO('mysql:host=localhost;dbname=toystore', "root", "root");
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
     $db = null;
@@ -197,7 +197,7 @@ try {
                             
                             $mysqli = new mysqli("localhost", "root", "root") or
                                 die("Could not connect: " . mysql_error());
-                            $res = $mysqli->query("use test;");
+                            $res = $mysqli->query("use toystore;"); //
 
                             $item_details_records = $mysqli->query("select * from parts where id=".$item_id." limit 1;");
                             $item_details = mysqli_fetch_row($item_details_records);
