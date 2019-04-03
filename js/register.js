@@ -3,10 +3,23 @@ $(document).ready(function () {
         var password = $('#password').val();
         var password_chk = $('#c_password').val();
         var email = $('#email').val();
-        if (email == "") {
+        var username = $('#username').val();
+        var streetAddress = $('#streetAddress').val();
+        var city = $('#city').val();
+        var zip = $('#zip').val();
+        if (username == "") {
+            $('#errorinfo').text('Please enter Username.');
+        }if (email == "") {
             $('#errorinfo').text('Please enter email.');
         } else if (password == "") {
             $('#errorinfo').text('Please enter password.');
+        } else if (streetAddress == "") {
+            $('#errorinfo').text('Please enter streetAddress.');
+        } else if (city == "") {
+            $('#errorinfo').text('Please enter cityName.');
+        } else if (zip == "") {
+            $('#errorinfo').text('Please enter zipCode.');
+        
         } else if (!email.match("@")) {
             $('#errorinfo').text('Please enter valid email.');
         } else if (!password.match(/[A-Za-z]/) || !password.match(/[0-9]/) || !password.length > 5) {
@@ -21,7 +34,7 @@ $(document).ready(function () {
                 success: function (msg) {
                     if (msg == "success") {
                         alert('Account Created Succesfully. Please Login!');
-                        window.location.href = "register.php";
+                        window.location.href = "login.php";
                     } else if (msg == "error1") {
                         $('#errorinfo').text('This email has already registered, please try another.');
                     }

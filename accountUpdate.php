@@ -2,23 +2,28 @@
 // include "User.php";
 class User{
     var $userId;
+    var $username;
     var $email;
     var $password;
-    // var $rank;
+    var $streetAddress;
+    var $city;
+    var $zip;
 }
 session_start();
 
-$userId= $_POST['userId'];
+$username = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
-// $rank = $_POST['rank'];
+$streetAddress = $_POST["streetAddress"];
+$city = $_POST["city"];
+$zip = $_POST["zip"];
 
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
 $dbname = "toystore"; //databaseName
 
-$con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
+$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 if (!$con)
 {
@@ -33,7 +38,7 @@ if (!$con)
     $user->userId = (int) $userId;
     $user->email = $email;
     $user->password = $password;
-    // $user->rank =$rank;
+
     $_SESSION["user"] = serialize($user);
     echo 'success';
 

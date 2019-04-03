@@ -2,9 +2,12 @@
 // include "User.php";
 class User{
     var $userId;
+    var $username;
     var $email;
     var $password;
-    // var $rank;
+    var $streetAddress;
+    var $city;
+    var $zip;
 }
 session_start();
 
@@ -48,7 +51,6 @@ if ($match2_e) {
     $user->username = $username;
     $user->email = $email;
     $user->password = $password;
-    // $user->rank = 1;
     $user->streetAddress = $streetAddress;
     $user->city = $city;
     $user->zip = $zip;

@@ -10,7 +10,6 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/site.css">
-    <script src="js/index.js"></script>
     <script src="js/register.js"></script>
     <style>
         a:hover {
@@ -69,7 +68,7 @@ session_start();
                     <div class="panel-heading">Register</div>
                     <div class="panel-body">
                         <div id="registerForm">
-                            <span id="errorinfo"></span>
+                            
                             <!--action="php/login_chk.php" method="post"-->
                             <div class="form-group">
                                 <label for="username">User Name:</label>
@@ -103,6 +102,7 @@ session_start();
                                 <input type="submit" name="submit" class="btn btn-default" value="REGISTER"
                                     id="register_chk">
                             </div>
+                            <span id="errorinfo" class="text-danger" style="font-size: 20pt"></span>
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,7 @@ $(document).ready(function () {
     $("#register_chk").click(function () {
         var password = $('#password').val();
         var password_chk = $('#c_password').val();
-        var id = $('#id').val();
-        var rank = $("rank").val();
+        var userId = $('#userId').val();
         var email = $('#email').val();
         if (email == "") {
             $('#errorinfo').text('Please enter email.');
@@ -18,10 +17,11 @@ $(document).ready(function () {
         } else {
             $.ajax({
                 url: "accountUpdate.php",
-                data: "password=" + password + "& email=" + email + "&id=" + id + "&rank=" + rank,
+                data: "password=" + password + "& email=" + email + "&userId=" + userId ,
                 type: "POST",
                 success: function (msg) {
                     if (msg == "success") {
+                        alert('Account Updated Succesfully!');
                         window.location.href = "account.php";
 
                     }
@@ -35,11 +35,11 @@ $(document).ready(function () {
             });
         }
     });
-    bag();
+    // bag();
 });
 
-function bag() {
-    $.post("bag.php", {}, function (data) {
-        $("#bag").text(data);
-    });
-}
+// function bag() {
+//     $.post("bag.php", {}, function (data) {
+//         $("#bag").text(data);
+//     });
+// }
