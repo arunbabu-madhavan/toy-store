@@ -1,20 +1,24 @@
 <?php
 // include "User.php";
 class User{
-    var $id;
+    var $userId;
     var $email;
     var $password;
-    var $rank;
+    // var $rank;
 }
 session_start();
 
+$username = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
+$streetAddress = $_POST["streetAddress"];
+$city = $_POST["city"];
+$zip = $_POST["zip"];
 
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
-$dbname = "test"; //databaseName
+$dbname = "toystore"; //databaseName
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -29,21 +33,25 @@ $match2_e = mysqli_fetch_array($match1_e);
 if ($match2_e) {
     echo 'error1';
 } else {
-    $sql = "insert into user values (null,'$email', '$password',1);";
+    $sql = "insert into user values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$password');";
 
     $result = mysqli_query($con, $sql) or die('MySQL query error');
 
     $result1 = mysqli_query($con, "SELECT * FROM user where email ='$email'");
 
     if ($row = mysqli_fetch_array($result1)) {
-        $id = $row['id'];
+        $userId = $row['userId'];
     }
 
     $user = new User();
-    $user->id = (int) $id;
+    $user->userId = (int) $userId;
+    $user->username = $username;
     $user->email = $email;
     $user->password = $password;
-    $user->rank = 1;
+    // $user->rank = 1;
+    $user->streetAddress = $streetAddress;
+    $user->city = $city;
+    $user->zip = $zip;
     $_SESSION["user"] = serialize($user);
     echo 'success';
 }

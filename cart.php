@@ -97,7 +97,7 @@ try {
                         <form class="form-horizontal" role="form" action="checkout.php">
                             <?php
                             foreach ($keys as $key) {
-                                $rows = $db->query("SELECT * from parts where id=$key");
+                                $rows = $db->query("SELECT * from sale where id=$key");
                                 if ($rows->rowCount() > 0) {
                                     $num = $cart[$key];
                                     $row = $rows->fetch();
@@ -194,7 +194,7 @@ try {
                                 die("Could not connect: " . mysql_error());
                             $res = $mysqli->query("use toystore;"); //
 
-                            $item_details_records = $mysqli->query("select * from parts where id=".$item_id." limit 1;");
+                            $item_details_records = $mysqli->query("select * from sale where id=".$item_id." limit 1;");
                             $item_details = mysqli_fetch_row($item_details_records);
                             //echo $item_details[2];
                             $item_name = $item_details[1];

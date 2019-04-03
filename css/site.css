@@ -580,6 +580,7 @@ header>div>* {
 .header-sub>div a {
   display: block;
   color: #0064a3;
+  text-decoration: none;
 
   padding: 5pt 20pt;
 
@@ -979,7 +980,6 @@ footer img {
 
 
 .footerCopy {
-  width: 100%;
   clear: both;
   text-align: center;
   font: 14px;
@@ -1655,7 +1655,9 @@ footer {
     text-align: center;
   }
 }
-
+a{
+  text-decoration: none;
+}
 a:link {
   text-decoration: none;
 }

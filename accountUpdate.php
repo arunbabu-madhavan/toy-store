@@ -1,17 +1,17 @@
 <?php
 // include "User.php";
 class User{
-    var $id;
+    var $userId;
     var $email;
     var $password;
-    var $rank;
+    // var $rank;
 }
 session_start();
 
-$password = $_POST["password"];
+$userId= $_POST['userId'];
 $email = $_POST["email"];
-$id= $_POST['id'];
-$rank = $_POST['rank'];
+$password = $_POST["password"];
+// $rank = $_POST['rank'];
 
 $dbhost = "localhost";
 $dbuser = "root";
@@ -26,14 +26,14 @@ if (!$con)
 }
 
 
-    $sql = "update user set password = '$password' where id = $id";
+    $sql = "update user set password = '$password' where userId = $userId";
 
     $result = mysqli_query($con,$sql) or die('MySQL query error');
     $user = new User();
-    $user->id = (int)$id;
+    $user->userId = (int) $userId;
     $user->email = $email;
     $user->password = $password;
-    $user->rank =$rank;
+    // $user->rank =$rank;
     $_SESSION["user"] = serialize($user);
     echo 'success';
 

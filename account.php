@@ -1,10 +1,10 @@
 <?php
 // include "User.php";
 class User{
-    var $id;
+    var $userId;
     var $email;
     var $password;
-    var $rank;
+    // var $rank;
 }
 session_start();
 $user = unserialize($_SESSION['userName']);
@@ -41,8 +41,8 @@ $user = unserialize($_SESSION['userName']);
                     <div id="registerForm">
                         <span id="errorinfo"></span>
                         <!--action="php/login_chk.php" method="post"-->
-                        <input type="hidden" value="<?=$user->id?>" id="id"/>
-                        <input type="hidden" value="<?=$user->rank?>" id="rank"/>
+                        <input type="hidden" value="<?=$user->userId?>" id="userId"/>
+                        <!-- <input type="hidden" value="<?=$user->rank?>" id="rank"/> //Didn't need customer Rank--> 
                         <div class="form-group">
                             <label for="email">Email address:</label>
                             <input type="text" class="form-control" value="<?=$user->email?>" id="email" disabled>
