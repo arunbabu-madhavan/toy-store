@@ -20,7 +20,6 @@ $(document).ready(function () {
                 type: "POST",
                 success: function (msg) {
                     if (msg == "success") {
-
                         alert('Account Created Succesfully. Please Login!');
                         window.location.href = "register.php";
                     } else if (msg == "error1") {
