@@ -1,18 +1,13 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["user"])) {
-
-    echo "<script language='javascript'>";
-    echo "alert(\"Please Login First\");";
-
-    echo "location='index.php'";
-
-    echo "</script>";
-
-    exit();
-
-}
+// if (!isset($_SESSION["user"])) {
+//     echo "<script language='javascript'>";
+//     echo "alert(\"Please Login First\");";
+//     echo "location='index.php'";
+//     echo "</script>";
+//     exit();
+// }
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = serialize(array());
