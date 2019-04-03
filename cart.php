@@ -23,7 +23,7 @@ $keys = array_keys($cart);
 
 
 try {
-    $db = new PDO('mysql:host=localhost;dbname=test', "root", "root");
+    $db = new PDO('mysql:host=localhost;dbname=toystore', "root", "root");
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
     $db = null;
@@ -108,15 +108,15 @@ try {
                                     $row = $rows->fetch();
                                     $id = $row['id'];
                                     $name = $row['name'];
-                                    $position = $row['position'];
-                                    $type = $row['type'];
+                                    $description = $row['description'];
+                                    $picture = $row['picture'];
                                     $price = $row['price'];
                                 }
                                 ?>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2">Name: <?= $name ?></label>
-                                    <label class="control-label col-sm-2">Position: <?= $position ?></label>
-                                    <label class="control-label col-sm-3">Manufacturer: <?= $type ?></label>
+                                    <label class="control-label col-sm-2">Position: <?= $description ?></label>
+                                    <label class="control-label col-sm-3">picture: <?= $picture ?></label>
                                     <label class="control-label col-sm-2">Price: <?= $price ?></label>
                                     <label class="control-label col-sm-1">Number: </label>
                                     <div class="col-sm-2">
@@ -176,10 +176,10 @@ try {
                                 <th>Order Id</th>
                                 <th>Order Date</th>
                                 <th>Item Name</th>
-                                <th>Position</th>
-                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Picture</th>
                                 <th>Count</th>
-                                <th>Cost</th>
+                                <th>Price</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -192,19 +192,19 @@ try {
                             
                             $price = 0;
                             $item_name = "";
-                            $position = "";
-                            $type = "";
+                            $description = "";
+                            $picture = "";
                             
                             $mysqli = new mysqli("localhost", "root", "root") or
                                 die("Could not connect: " . mysql_error());
-                            $res = $mysqli->query("use test;");
+                            $res = $mysqli->query("use toystore;"); //
 
                             $item_details_records = $mysqli->query("select * from parts where id=".$item_id." limit 1;");
                             $item_details = mysqli_fetch_row($item_details_records);
                             //echo $item_details[2];
                             $item_name = $item_details[1];
-                            $position = $item_details[2];
-                            $type = $item_details[3];
+                            $description = $item_details[2];
+                            $picture = $item_details[3];
                             $price = floatval($item_details[4]);
                             $cost = $count * $price;
                             ?>
@@ -214,8 +214,9 @@ try {
                                     <td><?= $order_id ?></td>
                                     <td><?= $order_date ?></td>
                                     <td><?= $item_name ?></td>
-                                    <td><?= $position ?></td>
-                                    <td><?= $type ?></td>
+                                    <td><?= $description ?></td>
+                                    <!-- <td><?= $picture ?></td> -->
+                                    <td><img src="data:image/jpeg;base64,<?php echo base64_encode( $picture ); ?>" /></td>
                                     <td><?= $count ?></td>
                                     <td><?= $cost ?></td>
                               </tr>

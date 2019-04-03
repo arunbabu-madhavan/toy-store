@@ -25,7 +25,7 @@
          <?php  echo getLoginLink(); ?>
       </div>
       <div class="cart-box" id="cart-box-icon">
-         <span></span>
+         <span>0</span>
       </div>
    </div>
    <div class="user-menu-md">

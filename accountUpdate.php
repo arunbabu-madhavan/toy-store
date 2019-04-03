@@ -16,7 +16,7 @@ $rank = $_POST['rank'];
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
-$dbname = "test"; //databaseName
+$dbname = "toystore"; //databaseName
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname);
 

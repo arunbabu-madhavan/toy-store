@@ -1031,7 +1031,7 @@ footer img {
 
 .form-actions .button {
   font: 16px 'Roboto', Gotham Medium;
-  padding: 10px;
+  margin: 10px;
   border: 0px;
   text-align: center;
 }
@@ -1311,7 +1311,7 @@ header>div>* {
   border: 0px;
   outline: 0;
   padding: 0px 40pt;
-  margin-left: -35px;
+  margin: 10px;
 }
 
 .user-menu {
@@ -2515,4 +2515,12 @@ h4 {
   color: rgba(52, 79, 7, 1);
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+}
+
+#toyImage {
+  height: 100%;
+  width: 100%;
+  box-shadow: 1px;
+  border-style: solid;
+  border-width: 1px;
 }

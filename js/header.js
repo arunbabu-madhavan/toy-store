@@ -10,59 +10,61 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-var count =0,total = 0.0;
+var count = 0, total = 0.0;
 
+//handle clicking add to cart button.
 function addToCart(product){
-    count++;
-    total += parseFloat(product.Price);
-    debugger;
-    const cartItemId =`#cart-${product.ID}`;
+  count++;
+  total += parseFloat(product.Price);
+  debugger;
+  const cartItemId =`#cart-${product.ID}`;
 
-    if($(cartItemId).length  == 0)
-    {
-        var item =  $('#floating-cart-item').html()
-                     .replace('$imageFile',product.Picture)
-                     .replace('$productName',product.Name)
-                     .replace('$productName',product.Name)
-                     .replace('$price',product.Price)
-                     .replace('$productId',product.ID)
-                     .replace('$productId',product.ID);
-        $('.floating-cart-items').append(item);
-    }
-    else
-    {
-        var qty = $(cartItemId).find('.qty').text();
-        $(cartItemId).find('.qty').text(++qty);
-    }
-    updateCartText();
+  if($(cartItemId).length  == 0)
+  {
+      var item =  $('#floating-cart-item').html()
+                    .replace('$imageFile',product.Picture)
+                    .replace('$productName',product.Name)
+                    .replace('$productName',product.Name)
+                    .replace('$price',product.Price)
+                    .replace('$productId',product.ID)
+                    .replace('$productId',product.ID);
+      $('.floating-cart-items').append(item);
+  }
+  else
+  {
+      var qty = $(cartItemId).find('.qty').text();
+      $(cartItemId).find('.qty').text(++qty);
+  }
+  updateCartText();
 
-    $(cartItemId+' .floating-cart-remove')
-                .click(function(){
-                        if($('.floating-cart-items')
-                        .find(cartItemId).length > 0)
-                        {
-                            var qty =  parseFloat($('.floating-cart-items')
-                                                .find(cartItemId).find('.qty')
-                                                .text());
-                            total -= (parseFloat($('.floating-cart-items')
-                                    .find(cartItemId)
-                                    .find('.floating-cart-price')
-                                    .text().replace('$','')) * qty);
-                                    count-=qty;
-                        }
-                        $('.floating-cart-items').find(cartItemId).remove();
-                        $('#cart-box-icon > span').text(count > 0 ? count : '');
+  $(cartItemId+' .floating-cart-remove')
+              .click(function(){
+                      if($('.floating-cart-items')
+                      .find(cartItemId).length > 0)
+                      {
+                          var qty =  parseFloat($('.floating-cart-items')
+                                              .find(cartItemId).find('.qty')
+                                              .text());
+                          total -= (parseFloat($('.floating-cart-items')
+                                  .find(cartItemId)
+                                  .find('.floating-cart-price')
+                                  .text().replace('$','')) * qty);
+                                  count-=qty;
+                      }
+                      $('.floating-cart-items').find(cartItemId).remove();
+                      $('#cart-box-icon > span').text(count > 0 ? count : '');
 
-                        updateCartText();
+                      updateCartText();
 
-                    });
+                  });
 }
 
+//display cart item count and hide overlay cart if it's empty
 function updateCartText(){
-    $('.floating-cart-header').text(`${ count } items, subtotal $${ total.toFixed(2) }`);
-    $('#cart-box-icon > span').text(count > 0 ? count : '');
-    if(count == 0)
-        $('.floating-cart').hide();
+  $('.floating-cart-header').text(`${ count } items, subtotal $${ total.toFixed(2) }`);
+  $('#cart-box-icon > span').text(count > 0 ? count : "0");
+  if(count == 0)
+      $('.floating-cart').hide();
 }
 
 function readQueryString(){
@@ -75,7 +77,6 @@ function readQueryString(){
       });
       return queries;
 }
-
 
 function loadProducts(type,$after,$append){
     $.ajax({
