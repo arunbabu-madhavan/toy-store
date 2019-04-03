@@ -1,3 +1,4 @@
+
 $(()=>{
     $('#cart-box-icon').click(()=>{
         if(count !=0)
@@ -57,6 +58,9 @@ function addToCart(product){
                       updateCartText();
 
                   });
+
+  //ajax to update cart session variable.
+
 }
 
 //display cart item count and hide overlay cart if it's empty
