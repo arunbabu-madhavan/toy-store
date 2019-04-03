@@ -1,10 +1,10 @@
 <?php
 // include "User.php";
 class User{
-    var $id;
+    var $userId;
     var $email;
     var $password;
-    var $rank;
+    // var $rank;
 }
 session_start();
 
@@ -36,11 +36,11 @@ if ($match2_e) {
     $result1 = mysqli_query($con, "SELECT * FROM user where email ='$email'");
 
     if ($row = mysqli_fetch_array($result1)) {
-        $id = $row['id'];
+        $userId = $row['userId'];
     }
 
     $user = new User();
-    $user->id = (int) $id;
+    $user->userId = (int) $userId;
     $user->email = $email;
     $user->password = $password;
     // $user->rank = 1;
