@@ -14,7 +14,7 @@ $password = $_POST["password"];
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
-$dbname = "test"; //databaseName
+$dbname = "toystore"; //databaseName
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -43,7 +43,10 @@ if ($match2_e) {
     $user->id = (int) $id;
     $user->email = $email;
     $user->password = $password;
-    $user->rank = 1;
+    // $user->rank = 1;
+    $user->streetAddress = $streetAddress;
+    $user->city = $city;
+    $user->zip = $zip;
     $_SESSION["user"] = serialize($user);
     echo 'success';
 }

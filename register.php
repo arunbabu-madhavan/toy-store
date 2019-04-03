@@ -85,6 +85,18 @@ session_start();
                                 <label for="c_password">Confirm Password: </label>
                                 <input type="password" name="c_password" class="form-control" id="c_password">
                             </div>
+                            <div class="form-group">
+                                <label for="streetAddress">Street Address: </label>
+                                <input type="text" name="streetAddress" class="form-control" id="streetAddress">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">city: </label>
+                                <input type="text" name="city" class="form-control" id="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">zip: </label>
+                                <input type="text" name="zip" class="form-control" id="zip">
+                            </div>
                             <div class="col-sm-offset-10 col-sm-2">
                                 <input type="submit" name="submit" class="btn btn-default" value="REGISTER"
                                     id="register_chk">
