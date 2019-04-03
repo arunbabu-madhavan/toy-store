@@ -8,8 +8,12 @@ class User{
 }
 session_start();
 
+$username = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
+$streetAddress = $_POST["streetAddress"];
+$city = $_POST["city"];
+$zip = $_POST["zip"];
 
 $dbhost = "localhost";
 $dbuser = "root";
@@ -29,7 +33,7 @@ $match2_e = mysqli_fetch_array($match1_e);
 if ($match2_e) {
     echo 'error1';
 } else {
-    $sql = "insert into user values (null,'$email', '$password',1);";
+    $sql = "insert into user values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$password');";
 
     $result = mysqli_query($con, $sql) or die('MySQL query error');
 
