@@ -266,11 +266,11 @@ INSERT INTO productcategory(ProductID,CategoryID) values
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 13);
 
-CREATE TABLE `toystore`.`User` ( `userId` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(40) NOT NULL , 
-`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL , `email` VARCHAR(40) NOT NULL , 
+CREATE TABLE `toystore`.`User` ( `userId` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(40) NOT NULL ,
+`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL , `email` VARCHAR(40) NOT NULL ,
 PRIMARY KEY (`userId`)) ENGINE = InnoDB;
 
-CREATE TABLE `toystore`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT, 
+CREATE TABLE `toystore`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT,
 `completed` BOOLEAN NOT NULL , PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
 
 ALTER TABLE `Sale` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -285,3 +285,4 @@ INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email
 
 INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '1', NULL, '1');
 INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '4', NULL, '0');
+DROP TABLE `cart`;
