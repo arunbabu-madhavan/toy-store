@@ -40,7 +40,7 @@ $productDetail = str_replace("\"", "'", $productDetail);
 <body>
   <?php include 'header.php' ?>
   <div class="content">
-  
+
     <div class="container">
       <div class="row">
         <div class="col-md-4">

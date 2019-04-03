@@ -1,8 +1,8 @@
 
 <?php
-   $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
-   $_SESSION["isAdmin"] = true;
-   ?>
+  session_start();
+  $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
+?>
 <script src="js/header.js"></script>
 <header>
    <!-- fonts -->
@@ -46,7 +46,7 @@
       <a href="index.php#hot-sellers">HOT SELLERS</a>
    </div>
    <?php
-      if(isset($_SESSION["isAdmin"] ) && isset($_SESSION["isAdmin"] )){
+      if(isset($_SESSION["isAdmin"] ) && ($_SESSION["isAdmin"] )){
       echo '<div >';
       echo    '<a href="editproduct.php?id=0"><h3>+</h3> ADD NEW PRODUCT</a>';
       echo '</div>';
@@ -71,7 +71,7 @@
        if(empty($_SESSION['userName']))
            return '<a class="logout" href="login.php">Login</a>';
         else
-           return '<a class="logout" href="logout.php">Looout</a>';
+           return '<a class="logout" href="logout.php">Logout</a>';
    }
 ?>
 
