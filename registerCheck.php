@@ -41,6 +41,7 @@ if ($match2_e) {
 
     $user = new User();
     $user->userId = (int) $userId;
+    $user->username = $username;
     $user->email = $email;
     $user->password = $password;
     // $user->rank = 1;

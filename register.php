@@ -74,6 +74,10 @@ session_start();
                             <span id="errorinfo"></span>
                             <!--action="php/login_chk.php" method="post"-->
                             <div class="form-group">
+                                <label for="username">User Name:</label>
+                                <input type="text" class="form-control" id="username">
+                            </div>
+                            <div class="form-group">
                                 <label for="email">Email address:</label>
                                 <input type="text" class="form-control" id="email">
                             </div>
