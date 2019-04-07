@@ -26,7 +26,7 @@ $keys = array_keys($cart);
 $_SESSION['ORDER_CART'] = array();
 $price=0;
 foreach($keys as $key){
-    $rows = $db->query("SELECT * from parts where id=$key");
+    $rows = $db->query("SELECT * from product where id=$key");
     if ($rows->rowCount() > 0) {
         $num = $cart[$key];
         $row = $rows->fetch();

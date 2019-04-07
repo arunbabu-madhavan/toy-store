@@ -29,8 +29,6 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -97,7 +95,7 @@ try {
                         <form class="form-horizontal" role="form" action="checkout.php">
                             <?php
                             foreach ($keys as $key) {
-                                $rows = $db->query("SELECT * from sale where id=$key");
+                                $rows = $db->query("SELECT * from product where id=$key");
                                 if ($rows->rowCount() > 0) {
                                     $num = $cart[$key];
                                     $row = $rows->fetch();
@@ -162,7 +160,7 @@ try {
                 <div class="panel-heading">Previous orders</div>
                 <div class="panel-body">
                     <?php
-                    $prev_order = $db->query("select * from orders where userid=".$_SESSION["id"].";");
+                    $prev_order = $db->query("select * from cart where userid=".$_SESSION["userId"].";"); //userId or id?
                     if ($prev_order->rowCount() > 0) {
                         ?>
                         <table class="table table-striped">
@@ -180,8 +178,8 @@ try {
                           <tbody>
                         <?php
                         foreach ($prev_order as $row) {
-                            $order_id = $row["orderid"];
-                            $item_id = $row["itemid"];
+                            // $order_id = $row["orderid"];
+                            $item_id = $row["productId"];
                             $count = $row["count"];
                             $order_date = $row["order_date"];
                             
@@ -194,7 +192,7 @@ try {
                                 die("Could not connect: " . mysql_error());
                             $res = $mysqli->query("use toystore;"); //
 
-                            $item_details_records = $mysqli->query("select * from sale where id=".$item_id." limit 1;");
+                            $item_details_records = $mysqli->query("select * from product where id=".$item_id." limit 1;");
                             $item_details = mysqli_fetch_row($item_details_records);
                             //echo $item_details[2];
                             $item_name = $item_details[1];
