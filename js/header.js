@@ -113,7 +113,7 @@ function updateCartInSession(product,qty,qtyToupdate,operation){
 
 //display cart item count and hide overlay cart if it's empty
 function updateCartText(){
-  $('.floating-cart-header').text(`${ count } items, subtotal $${ total.toFixed(2) }`);
+  $('.floating-cart-header').html(`${ count } items, subtotal <span style="color:#b12704">$${ total.toFixed(2) } </span>`);
   $('#cart-box-icon > span').text(count > 0 ? count : "0");
   if(count == 0)
       $('.floating-cart').hide();

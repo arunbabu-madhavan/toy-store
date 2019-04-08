@@ -911,8 +911,46 @@ header>div>* {
   display: block;
 
 }
+a:hover {
+  cursor: hand;
+  text-decoration: none;
+}
 
+.buyboxPrice {
+  font-size: 16px;
+  color: #0668a5;
+  margin-bottom: 4px;
+  width: 100%;
+  clear: both;
+}
 
+.productBuybox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #848484;
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-width: 320px;
+}
+
+.buyboxLabel {
+  float: left;
+  width: auto;
+  font-size: 16px;
+  color: #0668a5;
+  margin-bottom: 4px;
+  line-height: 2em;
+  text-align: left;
+}
+
+.buyboxValue {
+  display: inline;
+  font-size: 24px;
+  color: #b12704;
+  text-align: right;
+  float: right;
+}
 footer {
   position: fixed;
   background: #fff;
@@ -932,6 +970,15 @@ footer {
   min-width: 580px;
 
 }
+.pageHeader{
+  color: #0668a5;
+  font-size: 28px;
+  line-height: 1.1em;
+}
+.order-history-container{
+  border-color: #BBD3DE;
+  border-radius: 4px;
+}
 
 footer div {
   margin: auto;
@@ -942,6 +989,12 @@ footer img {
   height: 40pt;
   width: 40pt;
   margin-right: 20pt;
+}
+.user-menu a{
+  color:#fff;
+}
+.user-menu a:hover{
+  color: #c9c9c9;
 }
 
 @media only screen and (max-width: 800px) {

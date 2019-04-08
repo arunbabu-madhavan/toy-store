@@ -39,5 +39,4 @@
             <div class="floating-cart-remove">x</div>
             <div></div>
         </div>
-    </template>
-    
+</template>

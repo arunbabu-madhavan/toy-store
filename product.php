@@ -55,19 +55,23 @@ $productDetail = str_replace("\"", "'", $productDetail);
             echo "<h4>".$row['Name']."</h4>";
             echo $row['Description'];
             echo "<br>";
-            echo "Quantity : ".$row['Quantity'];
-            echo "<br>";
-            echo "Price : ".$row['Price'];
             ?>
           </div>
 
         </div>
-        <div class="col-md-3">
-        <div class="productCart">
-          <div class="productCartImg"><img src="images/addcart.png"></div>
-          <div class="productCartSpan">Add to Cart</div>
-          <input type="button" value="" onclick="addToCart(<?php echo $productDetail ?>)">
-          </div><br>
+        <div class="col-md-3 productBuybox">
+        <div class="buyboxBlock">
+					<div class="buyboxPrice">
+						<div class="buyboxLabel">Price: </div>
+						<div class="buyboxValue">$ <?php echo $row['Price']?></div>
+					</div>
+				</div>
+          <div class="productCart">
+            <div class="productCartImg"><img src="images/addcart.png"></div>
+            <div class="productCartSpan">Add to Cart</div>
+            <input type="button" value="" onclick="addToCart(<?php echo $productDetail ?>)">
+          </div>
+    <br/>
           <div class="btn btn-warning btn-lg btn-block">Checkout</div>
         </div>
       </div>

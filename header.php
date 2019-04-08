@@ -1,6 +1,8 @@
 
 <?php
   $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
+  $_SESSION["isAdmin"] = true;
+  $_SESSION['userName'] = "arun";
 ?>
 <script src="js/header.js"></script>
 <header>
@@ -18,8 +20,11 @@
          </form>
       </div>
       <div class="user-menu">
-         <label class="greeting">Hello <?php  echo $greetingMsg  ?>,</label>
-         <a>My Account</a>
+         <label class="greeting">Hello <?php  echo $greetingMsg  ?>!</label>
+         <?php   if (isset($_SESSION["userName"])) {
+         echo "<a href='orders.php'>My Orders</a>";
+         }
+         ?>
          <?php  echo getLoginLink(); ?>
       </div>
       <div class="cart-box" id="cart-box-icon">
