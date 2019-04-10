@@ -24,42 +24,6 @@ session_start();
 
 <br><br><br><br><br>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg" id="myModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Login</h4>
-                </div>
-                <form class="form-horizontal" role="form" action="login.php?type=1" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Email:</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" name="email" placeholder="Enter email">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">Password:</label>
-                            <div class="col-sm-10">
-                                <input type="password" class="form-control" name="pwd" placeholder="Enter password">
-                            </div>
-                        </div>
-                        <div class="form-group form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="remember"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default">Submit</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <!-- Register -->
     <div class="container-fluid">
         <div class="row">
@@ -67,16 +31,15 @@ session_start();
                 <div class="panel panel-primary">
                     <div class="panel-heading">Register</div>
                     <div class="panel-body">
-                        <div id="registerForm">
-                            
+                        <div id="registerForm" action="registerCheck.php" method="post">
                             <!--action="php/login_chk.php" method="post"-->
                             <div class="form-group">
                                 <label for="username">User Name:</label>
-                                <input type="text" class="form-control" id="username">
+                                <input type="text" name="username" class="form-control" id="username">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email address:</label>
-                                <input type="text" class="form-control" id="email">
+                                <input type="text" name="email" class="form-control" id="email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password: </label>
@@ -114,7 +77,5 @@ session_start();
     <br><br><br><br><br>
   <?php include 'footer.html';?>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
