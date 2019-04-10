@@ -11,6 +11,7 @@ class User{
 }
 session_start();
 
+// $userId = $_POST["userId"];
 $username = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
@@ -36,7 +37,7 @@ $match2_e = mysqli_fetch_array($match1_e);
 if ($match2_e) {
     echo 'error1';
 } else {
-    $sql = "insert into user values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$password');";
+    $sql = "insert into user (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`, `password`) values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$password');";
 
     $result = mysqli_query($con, $sql) or die('MySQL query error');
 
