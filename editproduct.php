@@ -48,7 +48,7 @@
 <body>
     <?php include 'header.php'; ?>
     <?php
-        if(!(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"]))
+        if(!isset($_SESSION["isAdmin"]) || $_SESSION["isAdmin"] == false)
         {
             header('location: index.php');
             exit();

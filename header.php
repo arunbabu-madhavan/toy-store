@@ -1,8 +1,7 @@
 
 <?php
+  session_start();
   $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
-  $_SESSION["isAdmin"] = true;
-  $_SESSION['userName'] = "arun";
 ?>
 <script src="js/header.js"></script>
 <header>
@@ -50,7 +49,7 @@
       <a href="index.php#hot-sellers">HOT SELLERS</a>
    </div>
    <?php
-      if(isset($_SESSION["isAdmin"] ) && ($_SESSION["isAdmin"] )){
+      if(isset($_SESSION["isAdmin"] ) && $_SESSION["isAdmin"] ){
       echo '<div >';
       echo    '<a href="editproduct.php?id=0"><h3>+</h3> ADD NEW PRODUCT</a>';
       echo '</div>';
