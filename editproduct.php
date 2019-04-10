@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include 'dbconfig.php';
     $productID = isset($_GET["id"]) ? intval($_GET["id"]) : 0;
     
@@ -22,7 +23,6 @@
      $row;
      $addMode = (mysqli_num_rows($result) == 0);
 
-     
         //Construct the query
         $queryCategory = "SELECT category.Name,category.ID, productcategory.ProductID
         FROM category 
@@ -50,7 +50,7 @@
     <?php
         if(!(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"]))
         {
-            header('location: index.php');
+            header('location: index.php');  
             exit();
         }
 
@@ -63,9 +63,11 @@
         <div class="productImage">
             <div class="image">
                 <?php
+                 $deleteText = "Delete";
                  if(!$addMode){
                     $row = mysqli_fetch_array($result);
-                    echo '<img id="product-image" src="images/'.$row['Picture'].'" />';
+                    $deleteText = $row['IsDelete'] == '1' ? 'Undo Delete':'Delete';
+                    echo '<img id="product-image" src="images/'.trim($row['Picture']).'" />';
                  }
                  else
                     echo '<img id="product-image"/>';
@@ -121,8 +123,8 @@
             </div>
             <div class="button-container">
                 <div class="delete-box">
-                    <div class="deleteText">Delete</div>
-                    <input type="button" value="" onclick="deleteProduct()" />
+                    <div class="deleteText"><?php echo  $deleteText?></div>
+                    <input type="button" value="" onclick="deleteProduct(<?php echo $row['IsDelete']?>)" />
                 </div>
                 <div class="productCart">
                     <div class="productCartSpan">Save</div>

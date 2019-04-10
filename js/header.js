@@ -145,7 +145,7 @@ function loadProducts(type,$after,$append){
 
 function bindProductTemplate(products,$after,$append){
     const item = (product) =>  $('#new-product-block').html()
-    .replace('$imgsrc',product.Picture)
+    .replace('$imgsrc',product.Picture.trim())
     .replace('$productText',product.Name)
     .replace('$price',product.Price)
     .replace('$productId',product.ID)

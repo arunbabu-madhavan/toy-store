@@ -95,7 +95,6 @@
     //close connection
    
     mysqli_close($conn);
-    
     header('location:product.php?id='.$productID);
     exit();
 
@@ -124,6 +123,6 @@
                $counter++;
          }
     
-        return $newname;
+        return trim($newname);
     }
 ?>

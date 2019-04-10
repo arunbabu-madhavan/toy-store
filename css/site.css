@@ -535,7 +535,7 @@ header>div>* {
   background: #fff;
   right: 4%;
   margin-top: -65px;
-  z-index: 1999;
+  z-index: 99999;
   border: 3px solid #ffce4a;
   border-radius: 10px;
   box-shadow: 5px 5px 20px -10px #000;

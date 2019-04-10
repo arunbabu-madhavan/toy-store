@@ -279,10 +279,10 @@ CREATE TABLE `toystore`.`SaleProduct` ( `saleId` INT NOT NULL , `productId` INT 
 ALTER TABLE `SaleProduct` ADD  FOREIGN KEY (`saleId`) REFERENCES `Sale`(`saleId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE `SaleProduct` ADD  FOREIGN KEY (`productId`) REFERENCES `product`(`ID`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
-INSERT INTO `User` (`userId`, `name`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Sydney St James', '1155 Union Circle #311277', 'Denton', '76203', 'ssJames@unt.edu');
-INSERT INTO `User` (`userId`, `name`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Matthew White', 'One Microsoft Way', 'Redmon', '98052', 'mwhite@msft.com');
-INSERT INTO `User` (`userId`, `name`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Jennifer Tran', '3150 Sabre Drive Southlake', 'Southlake', '76092', 'jtran@sabre.com');
-INSERT INTO `User` (`userId`, `name`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Nick Fealy', '3739 N Steele Blvd, Ste 300', 'Fayetteville', '72703', 'nfealy@supplypike.com');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Sydney St James', '1155 Union Circle #311277', 'Denton', '76203', 'ssJames@unt.edu');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Matthew White', 'One Microsoft Way', 'Redmon', '98052', 'mwhite@msft.com');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Jennifer Tran', '3150 Sabre Drive Southlake', 'Southlake', '76092', 'jtran@sabre.com');
+INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Nick Fealy', '3739 N Steele Blvd, Ste 300', 'Fayetteville', '72703', 'nfealy@supplypike.com');
 
 INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '1', NULL, '1');
 INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '4', NULL, '0');

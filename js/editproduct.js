@@ -62,8 +62,8 @@ function addError($control){
         $control.parent().append($('<span class="errorMsg">Invalid</span>').css('color','red'));
 }
 
-function deleteProduct(){
-    $('#isdelete').val(1);
+function deleteProduct(isdelete){
+    $('#isdelete').val(!isdelete);
     $("#update-product-btn").click();
 }
 

@@ -15,10 +15,14 @@ if(mysqli_connect_errno()){
 //Select database
 mysqli_select_db($conn,$databaseName);
 //Construct the query
-$query = "SELECT * FROM product WHERE product.ID = $productID";
+$query = "SELECT * FROM product WHERE product.ID = $productID AND isDelete = 0";
 
 $product = mysqli_query($conn,$query);
-//var_dump($product);
+if(mysqli_num_rows($product) == 0)
+{ 
+  header('location: index.php');
+  exit();
+}
 $row = mysqli_fetch_assoc($product);
 $row1 = $row;
 unset($row1['Description']);
@@ -40,12 +44,11 @@ $productDetail = str_replace("\"", "'", $productDetail);
 <body>
   <?php include 'header.php' ?>
   <div class="content">
-
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <?php
-            echo "<img id='toyImage' src='images/".$row["Picture"]."' alt='product picture' />";
+            echo "<img id='toyImage' src='images/".trim($row["Picture"])."' alt='product picture' />";
             echo "<br>";
           ?>
         </div>

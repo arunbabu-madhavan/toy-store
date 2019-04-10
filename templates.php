@@ -24,7 +24,7 @@
         if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"])
         {
             echo '<div class="edit-box">';
-            echo    '<a href="editproduct.php?id=$productId">edit</a>';
+            echo    '<a href="editproduct.php?id=$productId">UPDATE</a>';
             echo '</div>';
         }
         ?>
