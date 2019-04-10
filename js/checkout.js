@@ -45,7 +45,7 @@ $(document).ready(function () {
 
   $("#doneCheckout").click(function (e) {
     var answer = $('input[name=method]:checked').val();
-    //ajax here.
+
   });
 
 });
