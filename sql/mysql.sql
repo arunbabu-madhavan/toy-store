@@ -271,10 +271,6 @@ CREATE TABLE `toystore`.`User` ( `userId` INT NOT NULL AUTO_INCREMENT , `usernam
 PRIMARY KEY (`userId`)) ENGINE = InnoDB;
 ALTER TABLE `User` ADD UNIQUE(`email`);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ebc182acf6e2f9130bd21c575d87d41b007e7368
 CREATE TABLE `toystore`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT,
 `completed` BOOLEAN NOT NULL , PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
 
