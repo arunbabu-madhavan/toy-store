@@ -22,8 +22,9 @@ $result = mysqli_query($conn,$query);
 $user = mysqli_fetch_assoc($result);
 
 if($user == false){
-  header("Location: login.php");
-  die();
+  echo $query;
+  //header("location: login.php");
+  //die();
 }else{
   //if user exist, set session username and email
   $_SESSION['userName'] = $user['username'];
@@ -31,8 +32,7 @@ if($user == false){
   $_SESSION["isAdmin"] = $user['roleId'] == 1 ? true : false;
   echo $user['roleId'];
   echo (string)$_SESSION["isAdmin"] ;
-  header("Location: index.php");
+  header("location: index.php");
   die();
 }
-
 ?>

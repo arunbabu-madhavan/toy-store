@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Toy Store</title>
+  <title>Toy Store - Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
@@ -18,13 +18,10 @@ session_start();
     <div class="container">
       <div class="login">
         <h1 class="page-heading">Toy Store Login</h1>
-        <style>.loginSmall {font: 14px Gotham Light; margin-top: -10px; margin-bottom: 10px;} .loginSmall a {text-decoration: underline; color: ##0668a5; font-family: Gotham Medium;}</style>
-        <div class="loginSmall" style="display: none;">If you are looking for the ToyWiz Buy List, please click <a href="https://tools.toywiz.com/buylist/">here</a>.<br/>&nbsp;</div>
-
             <div class="login-row">
-              <form class="login-form form" action="session.php" method="post">
+              <form class="login-form form" action="loginSession.php" method="post">
                   <div class="form-field">
-                      <label class="form-label" for="email">Email:</label>
+                      <label class="form-label" for="email">Email  Address:</label>
                       <input class="form-input" name="email" id="email" type="text">
                       <div id="emailInfo"></div>
                   </div>
@@ -34,8 +31,9 @@ session_start();
                       <div id="passInfo"></div>
                   </div>
                   <div class="form-actions">
-                      <input type="submit" class="btn btn-primary login" value="Login"><br/>
-                      <a class="forgot-password" href="/login.php?action=reset_password">Forgot your password?</a>
+                  <div class="login-button-container">
+                      <input type="submit" class="btn btn-primary login" value="Login">
+                  </div>
                   </div>
               </form>
               <div class="new-customer">
@@ -51,7 +49,7 @@ session_start();
                               <li class="new-customer-fact">Access your order history</li>
                               <li class="new-customer-fact">Track new orders</li>
                           </ul>
-                          <center><a href="register.php?action=create_account"><button class="button button--primary">Create Account</button></a></center>
+                          <div class="login-button-container"><a href="register.php?action=create_account"><button class="button button--primary">Create Account</button></a></div>
                       </div>
                   </div>
               </div>

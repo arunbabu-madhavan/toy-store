@@ -288,7 +288,6 @@ INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '1',
 INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '4', NULL, '0');
 
 ALTER TABLE `User` ADD `password` VARCHAR(128) NOT NULL AFTER `email`;
-CREATE TABLE `toystore`.`cart` ( `userId` INT NOT NULL , `productId` INT NOT NULL , `quantity` INT NOT NULL ) ENGINE = InnoDB;
 
 ALTER TABLE `cart` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `cart` ADD FOREIGN KEY (`productId`) REFERENCES `product`(`ID`) ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE `User` ADD UNIQUE(`username`);
@@ -302,5 +301,4 @@ UPDATE `User` SET `password` = '97d7a5cd8938e6a2a968d8d973c6338585acdaa6626f9967
 UPDATE `User` SET `password` = '0e7caf4c6cd8b5e95673dacb9448ec244fe73a9a6b6f25ce8c4fb604b0ce139d' WHERE `User`.`userId` = 3;
 UPDATE `User` SET `password` = 'bc536583de8a23ff015f0021c018630d971ed868ce0fbeba3737c57a9375557f' WHERE `User`.`userId` = 4;
 INSERT INTO `role` (`roleId`, `description`) VALUES ('1', 'admin'), ('2', 'customer');
-INSERT INTO `roleUser` (`roleId`, `userId`) VALUES ('1', '1'), ('2', '2');
-DROP TABLE `cart`;
+INSERT INTO `roleUser` (`roleId`, `userId`) VALUES ('1', '1'), ('2', '2'),('2','3'),('2','4');

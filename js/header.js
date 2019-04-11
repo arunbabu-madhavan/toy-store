@@ -1,7 +1,9 @@
+var count = 0, total = 0.0;
 
 $(()=>{
     $('#cart-box-icon').click(()=>{
-        if(count !=0)
+        
+        if(count !=0 && location.href.indexOf('checkout.php') ==-1)
             $('.floating-cart').toggle();
     });
     
@@ -13,18 +15,16 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
 };
 
-var count = 0, total = 0.0;
 
 function getCartFromSession(){
     $.ajax({
-        url:'cartsession.php',
+        url:'api/cartsession.php',
         type:'GET',
         dataType:'json',
         success:(cartItems)=>{
             $.each(cartItems ,(idx, cartItem) => {
                 for(var i=0;i<cartItem.qty;i++)
                     addToCart(cartItem,false);
-
             });
         }
     });
@@ -43,7 +43,7 @@ function addToCart(product,updateSession = true){
   if($(cartItemId).length  == 0)
   {
       var item =  $('#floating-cart-item').html()
-                    .replace('$imageFile',product.Picture)
+                    .replace('$imageFile',product.Picture.trim())
                     .replace('$productName',product.Name)
                     .replace('$productName',product.Name)
                     .replace('$price',product.Price)
@@ -74,6 +74,7 @@ function addToCart(product,updateSession = true){
                                   .text().replace('$','')) * qty);
                                   count-=qty;
                       }
+
                       $('.floating-cart-items').find(cartItemId).remove();
                       $('#cart-box-icon > span').text(count > 0 ? count : '');
 
@@ -85,17 +86,16 @@ function addToCart(product,updateSession = true){
 }
 
 function updateCartInSession(product,qty,qtyToupdate,operation){
-//    console.log(product);
     var cartItem = {
         ID:product.ID,
-        Picture:product.Picture,
+        Picture:product.Picture.trim(),
         Name:product.Name,
         Price:product.Price,
         qty:qty,
     };
     $.ajax(
         {
-        url:'cartsession.php',
+        url:'api/cartsession.php',
         data: {
             cartItem:JSON.stringify(cartItem),
             updateQty:qtyToupdate,
@@ -117,6 +117,9 @@ function updateCartText(){
   $('#cart-box-icon > span').text(count > 0 ? count : "0");
   if(count == 0)
       $('.floating-cart').hide();
+if($('.subtotal > h4'.length > 0))
+   $('.subtotal > h4').text(' $ '+ total.toFixed(2));
+
 }
 
 function readQueryString(){
@@ -132,7 +135,7 @@ function readQueryString(){
 
 function loadProducts(type,$after,$append){
     $.ajax({
-        url:'filter.php?'+type+'=1',
+        url:'api/filterProducts.php?'+type+'=1',
         type:"GET",
         success:(products)=>{
             products = JSON.parse(products);

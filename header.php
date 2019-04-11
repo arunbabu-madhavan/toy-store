@@ -1,6 +1,5 @@
 
 <?php
-  session_start();
   $greetingMsg =  empty($_SESSION['userName']) ? "Guest":  $_SESSION['userName'];
 ?>
 <script src="js/header.js"></script>
@@ -60,10 +59,10 @@
    <div class="floating-cart-items">
    </div>
    <div class="floating-cart-buttons">
-      <a href="/checkout.php">
+      <a href="checkout.php#checkout">
          <div class="preview-button floating-cart-button">Checkout</div>
       </a>
-      <a href="/cart.php">
+      <a href="checkout.php">
          <div class="preview-button preview-button-white floating-cart-button">View Cart</div>
       </a>
    </div>

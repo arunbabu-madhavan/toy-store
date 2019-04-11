@@ -11,28 +11,17 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/site.css">
     <script src="js/register.js"></script>
-    <style>
-        a:hover {
-            cursor: hand;
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
   <?php include 'header.php';?>
-  
-
-<br><br><br><br><br>
-
-    <!-- Register -->
+  <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-offset-2 col-sm-8" style="margin-top: 10px;">
+            <div class="col-sm-offset-2 col-sm-8" >
+            <h1 class="page-heading">New Account</h1>
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Register</div>
                     <div class="panel-body">
                         <div id="registerForm" action="registerCheck.php" method="post">
-                            <!--action="php/login_chk.php" method="post"-->
                             <div class="form-group">
                                 <label for="username">User Name:</label>
                                 <input type="text" name="username" class="form-control" id="username">
@@ -54,27 +43,25 @@ session_start();
                                 <input type="text" name="streetAddress" class="form-control" id="streetAddress">
                             </div>
                             <div class="form-group">
-                                <label for="city">city: </label>
+                                <label for="city">City: </label>
                                 <input type="text" name="city" class="form-control" id="city">
                             </div>
                             <div class="form-group">
-                                <label for="zip">zip: </label>
+                                <label for="zip">Zip: </label>
                                 <input type="text" name="zip" class="form-control" id="zip">
                             </div>
-                            <div class="col-sm-offset-10 col-sm-2">
-                                <input type="submit" name="submit" class="btn btn-default" value="REGISTER"
+                            <div class="col-sm-offset-10 col-sm-6">
+                                <input type="submit" name="submit" class="btn btn-primary login" value="REGISTER"
                                     id="register_chk">
                             </div>
-                            <span id="errorinfo" class="text-danger" style="font-size: 20pt"></span>
+                            <span id="errorinfo" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <br><br><br><br><br>
+</div>
   <?php include 'footer.html';?>
     
 </body>

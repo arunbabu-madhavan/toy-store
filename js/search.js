@@ -67,7 +67,7 @@ function loadSearchResults(){
     $('.loading').show();
     $('.products-grid > div.productrow').empty();
     $.ajax({
-        url:'filter.php'+window.location.search,
+        url:'api/filterProducts.php'+window.location.search,
         type:"GET",
         dataType:'json',
         success:(data)=>{

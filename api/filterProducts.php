@@ -7,7 +7,7 @@
     $page_count = 8;
     session_start();
 
-    include 'dbconfig.php';
+    include '../dbconfig.php';
 
     $conn = mysqli_connect("$serverName:$port",$username,$password);
 

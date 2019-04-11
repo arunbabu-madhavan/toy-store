@@ -1,17 +1,4 @@
 <?php
-// include "User.php";
-class User{
-    var $userId;
-    var $username;
-    var $email;
-    var $password;
-    var $streetAddress;
-    var $city;
-    var $zip;
-}
-session_start();
-
-// $userId = $_POST["userId"];
 $username = $_POST["username"];
 $email = $_POST["email"];
 $password = $_POST["password"];
@@ -31,15 +18,19 @@ if (!$con) {
 }
 
 $query1 = "select * from user where email = '$email';";
-$match1_e = mysqli_query($con, $query1) or die('MySQL query error');
+$match1_e = mysqli_query($con, $query1) or die('MySQL error');
 $match2_e = mysqli_fetch_array($match1_e);
 
+$hashPassword = hash('sha256',$password);
 if ($match2_e) {
     echo 'error1';
 } else {
-    $sql = "insert into user (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`, `password`) values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$password');";
+    $sql = "insert into user (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`, `password`)
+                         values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$hashPassword');";
+   
+    $roleSql = "";
 
-    $result = mysqli_query($con, $sql) or die('MySQL query error');
+    $result = mysqli_query($con, $sql) or die('MySQL error');
 
     $result1 = mysqli_query($con, "SELECT * FROM user where email ='$email'");
 
@@ -47,15 +38,11 @@ if ($match2_e) {
         $userId = $row['userId'];
     }
 
-    $user = new User();
-    $user->userId = (int) $userId;
-    $user->username = $username;
-    $user->email = $email;
-    $user->password = $password;
-    $user->streetAddress = $streetAddress;
-    $user->city = $city;
-    $user->zip = $zip;
-    $_SESSION["user"] = serialize($user);
+    $sql = "insert into roleUser (`roleId`,`userId`)
+    values (2, '$userId');";
+
+    $result = mysqli_query($con, $sql) or die('MySQL error');
+
     echo 'success';
 }
 mysqli_close($con);

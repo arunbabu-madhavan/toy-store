@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'dbconfig.php';
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,24 +19,47 @@ include 'dbconfig.php';
 <body>
   <?php include 'header.php' ?>
   <div class="content">
-    <div class="cart">
-      <?php  //var_dump($_SESSION['cartItems']);
+  <div class="pageHeader">Checkout</div>
 
+  <form action="placeOrder.php" method="POST" id="checkoutForm">
+  <div class="main">
+    <div id="accordion">
+    <h3 class="cartDetails title">Cart</h3>
+    <div class="cart" id="cart">
+    <div class="cartHeader">
+  <div class="cartImage">PRODUCT</div>
+  <div class="cartQTY">QTY</div>
+	<div class="cartPrice">PRICE</div>
+
+	<div class="cartTotal">TOTAL</div>
+  
+</div>
+      <?php 
         $cartItems=$_SESSION['cartItems'];
+        $subTotal = 0;
         for($i=0;$i<count($cartItems);$i++){
           echo '<div class="cartItem">';
-          echo '<img  class="cartImg" src="images/'.$cartItems[$i]->Picture.'" alt="image of Game of Thrones Jon Snow 7.5-Inch Statue Figure"><br>';
-          echo 'Name: '.$cartItems[$i]->Name.'<br>';
-          echo 'Price: '.$cartItems[$i]->Price.'<br>';
-          echo 'Quantity: '.$cartItems[$i]->qty.'<br>';
+          echo '<div class="product-container">';
+          echo '<img class="cartImg" src="images/'.trim($cartItems[$i]->Picture).'">';
+          echo '<div><a href="product.php?id='.$cartItems[$i]->ID.'">'.$cartItems[$i]->Name.'</a></div>';
+          echo '</div>';
+          echo '<div>
+                <span><input type="text" value="'.$cartItems[$i]->qty .'"/></span>
+                    <a  onclick='."'".'updateCartItem('.json_encode($cartItems[$i]).',this)'."'".'>update</a>
+                    </div>';
+          echo '<div> $ '.$cartItems[$i]->Price.'</div>';
+          $subTotal += $cartItems[$i]->Price * $cartItems[$i]->qty;
+          echo '<div><span class="itemTotal"> $ '.$cartItems[$i]->Price * $cartItems[$i]->qty .'</span>
+          <a onclick="removeCartItem('.$cartItems[$i]->ID.',this)">remove</a></div>';
           echo '</div>';
         }
+        echo '<div class="subtotal"><h4> $ '.$subTotal.'</h4> <h2>Subtotal</h2> </div>'
       ?>
+       <div class="checkoutDetails"><button type="button" class="button button--primary" id="checkoutBtn">Checkout</button></div>
     </div>
-  <form action="placeOrder.php" method="POST" id="checkoutForm">
-  <div class="main"><div id="accordion">
-    <h3 class="accountDetails">Account Details</h3>
-    <div><h5>Choose your checkout option</h5><br>Register with us for a faster checkout, to track the status of your order and more. You can also checkout as a guest.<br>
+
+    <h3 id="accountDetails">Account Details</h3>
+    <div class="accountDetails" ><h5>Choose your checkout option</h5><br>Register with us for a faster checkout, to track the status of your order and more. You can also checkout as a guest.<br>
       <form>
     <input type="radio" name="method" value="guest" checked="checked"/>Checkout as Guest<br>
     <?php
@@ -46,7 +68,7 @@ include 'dbconfig.php';
           echo '<input type="radio" name="method" value="returningCust" />Returning customer<br>';
         }
         ?>
-        <button type="button" id="pickCheckout">Continue</button><br>
+        <button type="button" class="button button--primary" id="pickCheckout">Continue</button><br>
       </form>
     </div>
 
@@ -76,7 +98,10 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
-          <input type="email" class="email" value="<?php echo $user['email'] ? $user['email'] : ''; ?>">
+          <div class="group">
+            <input type="email" class="email " value="<?php echo $user['email'] ? $user['email'] : ''; ?>"><span class="highlight"></span><span class="bar"></span>
+
+      </div>
         </dd>
         <dt>
           <label for="username">
@@ -84,23 +109,36 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
+        <div class="group">
           <input type="text" class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
+          <span class="highlight"></span><span class="bar"></span>
+      </div>
+
         </dd>
         <dt>
+          
           <label for="phoneNumber">
             Phone Number:</span>
           </label>
         </dt>
         <dd>
+        <div class="group">
           <input type="text" class="phone"">
+          <span class="highlight"></span><span class="bar"></span>
+      </div>
+
         </dd>
         <dt>
           <label for="phone">
-            * Address Line 1:</span>
+            * Address:</span>
           </label>
         </dt>
         <dd>
-          <input type="text" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+        <div class="group">
+          <input type="text" style="width:500px" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+          <span class="highlight"></span><span class="bar"></span>
+          </div>
+
         </dd>
         <dt>
           <label for="city">
@@ -108,25 +146,38 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
+        <div class="group">
+
           <input type="text" class="city" value="<?php echo $user['city'] ? $user['city'] : ''; ?>">
+          <span class="highlight"></span><span class="bar"></span>
+          </div>
+
         </dd>
         <dt>
           <label for="zip">
             * Zip:</span>
-          </label><br>
+          </label>
+        <div class="group">
+
           <input type="text" class="zip"  value="<?php echo $user['zip'] ? $user['zip'] : ''; ?>"/>
+          <span class="highlight"></span><span class="bar"></span>
+          </div>
+
         </dt>
-        <button type="button" id="pickBilling">Continue</button><br>
+        <button type="button" class="button button--primary" id="pickBilling">Continue</button><br>
       </dl>
     <h3>Shipping Details</h3>
-    <div><dl>
+    <div class="shippingDetails"><dl>
     <dt>
           <label for="email">
             * Email Address:</span>
           </label>
         </dt>
         <dd>
-          <input type="email" class="email" value="<?php echo $user['email'] ? $user['email'] : ''; ?>">
+        <div class="group">
+          <input type="email" class="email" value="<?php echo $user['email'] ? $user['email'] : ''; ?>"> <span class="highlight"></span><span class="bar"></span>
+          </div>
+
         </dd>
         <dt>
           <label for="username">
@@ -134,7 +185,11 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
+        <div class="group">
           <input type="text" class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
+          <span class="highlight"></span><span class="bar"></span>
+      </div>
+
         </dd>
         <dt>
           <label for="phoneNumber">
@@ -142,7 +197,13 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
+        <div class="group">
+
           <input type="text" class="phone"">
+          <span class="highlight"></span><span class="bar"></span>
+      </div>
+
+
         </dd>
         <dt>
           <label for="phone">
@@ -150,7 +211,12 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
+        <div class="group">
+
           <input type="text" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+          <span class="highlight"></span><span class="bar"></span>
+      </div>
+
         </dd>
         <dt>
           <label for="city">
@@ -158,27 +224,34 @@ include 'dbconfig.php';
           </label>
         </dt>
         <dd>
+        <div class="group">
+
           <input type="text" class="city" value="<?php echo $user['city'] ? $user['city'] : ''; ?>">
+          <span class="highlight"></span><span class="bar"></span>
+      </div>
+
         </dd>
         <dt>
           <label for="zip">
             * Zip:</span>
-          </label><br>
+          </label>
+        <div class="group">
+
           <input type="text" class="zip"  value="<?php echo $user['zip'] ? $user['zip'] : ''; ?>"/>
+          <span class="highlight"></span><span class="bar"></span>
+
         </dt>
       </dl>
-        <button type="button" id="pickAddress">Continue</button><br></div>
+        <button type="button" class="button button--primary" id="pickAddress">Continue</button></div>
     <h3>Order Confirmation</h3>
-      <div>
+      <div class="orderdetails">
         Show PHP order details here.<br>
-        <button type="submit" id="placeOrder" name="submitQuantity">Continue</button><br>
+        <button type="submit" id="placeOrder" class="button button--primary" name="submitQuantity">Continue</button><br>
     </div>
   </div>
   </form>
   </div>
   <?php include 'footer.html' ?>
-
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
 </body>
 </html>

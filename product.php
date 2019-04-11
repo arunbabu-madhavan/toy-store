@@ -35,10 +35,13 @@ $productDetail = str_replace("\"", "'", $productDetail);
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Toy Store</title>
+  <title>Toy Store - <?php echo $row['Name']?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
   <link rel="stylesheet" type="text/css" href="css/site.css">
+  
   <script src="js/product.js"></script>
 </head>
 <body>
@@ -46,23 +49,25 @@ $productDetail = str_replace("\"", "'", $productDetail);
   <div class="content">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 product-image-container">
           <?php
             echo "<img id='toyImage' src='images/".trim($row["Picture"])."' alt='product picture' />";
             echo "<br>";
           ?>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
           <div class="row">
             <?php
-            echo "<h4>".$row['Name']."</h4>";
-            echo $row['Description'];
+            echo "<h3 class='product-heading'>".$row['Name']."</h3>";
+            echo "<div class='desc-tab'><span>Description</span></div>";
+            echo "<span>".$row['Description']."</span>";
             echo "<br>";
             ?>
           </div>
 
         </div>
-        <div class="col-md-3 productBuybox">
+        <div class="col-md-3">
+          <div class="productBuybox">
         <div class="buyboxBlock">
 					<div class="buyboxPrice">
 						<div class="buyboxLabel">Price: </div>
@@ -77,17 +82,10 @@ $productDetail = str_replace("\"", "'", $productDetail);
     <br/>
           <div class="btn btn-warning btn-lg btn-block">Checkout</div>
         </div>
+</div>
       </div>
     </div>
   </div>
   <?php include 'footer.html' ?>
-
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 </body>
 </html>
