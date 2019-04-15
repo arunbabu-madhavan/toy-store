@@ -9,44 +9,59 @@ $(document).ready(function () {
         var city = $('#city').val();
         var zip = $('#zip').val();
         if (username == "") {
+            $('#username').after('<span class="text-danger" id="userinfo">* This field is required</span>');
+		    $("#userinfo").fadeOut(10000);
             $('#errorinfo').text('Please enter Username.');
             isvalid = false;
             $('#username').focus();
         }
         if (email == "") {
+            $('#email').after('<span class="text-danger" id="emailinfo">* This field is required</span>');
+		    $("#emailinfo").fadeOut(10000);
             $('#errorinfo').text('Please enter email.');
             $('#email').focus();
             isvalid = false;
         } else if (!email.match("@")) {
-            $('#errorinfo').text('Please enter valid email.');
+            $('#email').after('<span class="text-danger" id="emailerror">Please enter valid email.</span>');
+            $("#emailerror").fadeOut(10000);
             $('#email').focus();
             isvalid = false;
         } if (password == "") {
+            $('#password').after('<span class="text-danger" id="passwordinfo">* This field is required</span>');
+		    $("#passwordinfo").fadeOut(10000);
             $('#errorinfo').text('Please enter password.');
             $('#password').focus();
             isvalid = false;
         } else if (!password.match(/[A-Za-z]/) || !password.match(/[0-9]/) || !password.length > 5) {
-            $('#password').focus();
-            $('#errorinfo').text('Please enter valid password. Must contain one or more uppercase letters and lowercase letters, a number and at least 6 letters.');
+            $('#password').after('<span class="text-danger" id="passworderror1">Please enter valid password. Must contain one or more uppercase letters and lowercase letters, a number and at least 6 letters.</span>');
+		    $("#passworderror1").fadeOut(10000);
+            $('#password').focus();    
             isvalid = false;
         } else if (password != password_chk) {
-            $('#errorinfo').text('Please confirm your password again.');
+            $('#password').after('<span class="text-danger" id="passworderror2">Please confirm your password again.</span>');
+		    $("#passworderror2").fadeOut(10000);
             $('#c_password').focus();
             isvalid = false;
         }
          if (streetAddress == "") {
+            $('#streetAddress').after('<span class="text-danger" id="streetAddressinfo">* This field is required</span>');
+            $("#streetAddressinfo").fadeOut(10000);
+            $('#errorinfo').text('Please enter Street Address.');
             $('#streetAddress').focus();
-            $('#errorinfo').text('Please enter streetAddress.');
             isvalid = false;
         } 
          if (city == "") {
+            $('#city').after('<span class="text-danger" id="cityinfo">* This field is required</span>');
+            $("#cityinfo").fadeOut(10000);
+            $('#errorinfo').text('Please enter City Name.');
             $('#city').focus();
-            $('#errorinfo').text('Please enter cityName.');
             isvalid = false;
         } 
          if (zip == "") {
-            $('#zip').focus();
-            $('#errorinfo').text('Please enter zipCode.');
+            $('#zip').after('<span class="text-danger" id="zipinfo">* This field is required</span>');
+            $("#zipinfo").fadeOut(10000);
+             $('#errorinfo').text('Please enter Zip Code.');
+             $('#zip').focus();
             isvalid = false;
         } 
         if (isvalid) {
