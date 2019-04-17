@@ -1,36 +1,34 @@
 <?php
-session_start();
+  session_start();
 
-include 'dbconfig.php';
-$productID = isset($_GET["id"]) ? intval($_GET["id"]) : 0;
+  include 'dbconfig.php';
+  $productID = isset($_GET["id"]) ? intval($_GET["id"]) : 0;
 
-$params = array();
-//Connect to mysql server
-$conn = mysqli_connect("$serverName:$port",$username,$password);
+  $params = array();
+  //Connect to mysql server
+  $conn = mysqli_connect("$serverName:$port",$username,$password);
 
-if(mysqli_connect_errno()){
-      die("Databse connection failed".mysqli_connect_error());
-}
+  if(mysqli_connect_errno()){
+        die("Databse connection failed".mysqli_connect_error());
+  }
 
-//Select database
-mysqli_select_db($conn,$databaseName);
-//Construct the query
-$query = "SELECT * FROM product WHERE product.ID = $productID AND isDelete = 0";
+  //Select database
+  mysqli_select_db($conn,$databaseName);
+  //Construct the query
+  $query = "SELECT * FROM product WHERE product.ID = $productID AND isDelete = 0";
 
-$product = mysqli_query($conn,$query);
-if(mysqli_num_rows($product) == 0)
-{ 
-  header('location: index.php');
-  exit();
-}
-$row = mysqli_fetch_assoc($product);
-$row1 = $row;
-unset($row1['Description']);
-$productDetail = json_encode($row1);
-$productDetail = str_replace(array("\\r", "\\n"), '', $productDetail);
-$productDetail = str_replace("\"", "'", $productDetail);
-
-
+  $product = mysqli_query($conn,$query);
+  if(mysqli_num_rows($product) == 0)
+  {
+    header('location: index.php');
+    exit();
+  }
+  $row = mysqli_fetch_assoc($product);
+  $row1 = $row;
+  unset($row1['Description']);
+  $productDetail = json_encode($row1);
+  $productDetail = str_replace(array("\\r", "\\n"), '', $productDetail);
+  $productDetail = str_replace("\"", "'", $productDetail);
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,7 +39,7 @@ $productDetail = str_replace("\"", "'", $productDetail);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="css/site.css">
-  
+
   <script src="js/product.js"></script>
 </head>
 <body>
@@ -77,12 +75,14 @@ $productDetail = str_replace("\"", "'", $productDetail);
           <div class="productCart">
             <div class="productCartImg"><img src="images/addcart.png"></div>
             <div class="productCartSpan">Add to Cart</div>
-            <input type="button" value="" onclick="addToCart(<?php echo $productDetail ?>)">
+            <input type="button" value="" onclick="addToCart(<?php echo $productDetail ?>)" <?php if($row['Quantity'] <= 0) echo 'disabled'; ?>>
+
+
           </div>
-    <br/>
+          <br/>
           <div class="btn btn-warning btn-lg btn-block">Checkout</div>
         </div>
-</div>
+        </div>
       </div>
     </div>
   </div>
