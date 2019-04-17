@@ -249,11 +249,11 @@ include 'dbconfig.php';
           </dl>
           <button type="button" class="button button--primary" id="pickAddress">Continue</button></div>
         <h3>Order Confirmation</h3>
-            <div class="orderdetails">
-              <button type="submit" id="placeOrder" class="button button--primary" name="submitQuantity">Continue</button><br>
-            </div>
-          </div>
+        <div class="orderdetails">
+          <button type="submit" id="placeOrder" class="button button--primary" name="submitQuantity">Continue</button><br>
         </div>
+      </div>
+    </div>
   </form>
   </div>
   </div>
