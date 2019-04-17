@@ -52,6 +52,11 @@ function addToCart(product, updateSession = true) {
     $('.floating-cart-items').append(item);
   } else {
     qty = $(cartItemId).find('.qty').text();
+    if ( +qty + (+1) > +product.Quantity)
+        {
+            alert("Maxmimum quantity reached");
+            return;
+        }
     $(cartItemId).find('.qty').text(++qty);
   }
   updateCartText();
@@ -89,7 +94,9 @@ function updateCartInSession(product, qty, qtyToupdate, operation) {
     Name: product.Name,
     Price: product.Price,
     qty: qty,
+    Quantity:product.Quantity
   };
+
   $.ajax({
     url: 'api/cartsession.php',
     data: {
@@ -157,7 +164,6 @@ function bindProductTemplate(products, $after, $append) {
     .replace('$productId', product.ID)
     .replace('$productId', product.ID)
     .replace('$product', JSON.stringify(product).replaceAll("'", "").replaceAll("\"", "'"))
-    .replace('$quantity', product.Quantity);
 
   if ($after)
     $after.after(products.map(item).join(''));

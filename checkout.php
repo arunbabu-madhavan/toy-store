@@ -61,9 +61,8 @@ include 'dbconfig.php';
         <?php
             if (!isset($_SESSION["userName"])) {
               echo '<div class="accountDetails" ><h5>Choose your checkout option</h5><br>Register with us for a faster checkout, to track the status of your order and more. You can also checkout as a guest.<br>';
-              echo '<input type="radio" name="method" value="guest" checked="checked"/>Checkout as Guest<br>';
               echo '<input type="radio" name="method" value="register" />Register an Account<br>';
-              echo '<input type="radio" name="method" value="returningCust" />Returning customer<br>';
+              echo '<input type="radio" name="method" value="login" />Returning customer<br>';
               echo '<button type="button" class="button button--primary" id="pickCheckout">Continue</button><br>';
             } else echo "You have already logged in.<br>";
           ?>
@@ -83,9 +82,7 @@ include 'dbconfig.php';
 
             $queryString  = "SELECT * FROM User WHERE email = '".$_SESSION['email']."'";
             $result = mysqli_query($conn, $queryString);
-            //echo $queryString;
             $user = mysqli_fetch_assoc($result);
-            //var_dump($result);
             }
         ?>
         <h3 class="billingInformation">Billing Details</h3>
@@ -103,20 +100,7 @@ include 'dbconfig.php';
           </div>
 
             </dd>
-            <dt>
-
-              <label for="phoneNumber">
-                Phone Number:
-              </label>
-            </dt>
-            <dd>
-            <div class="group">
-              <input type="text" name="bPhone"  class="phone" >
-              <div id="phoneInfo"></div>
-              <span class="highlight"></span><span class="bar"></span>
-          </div>
-
-            </dd>
+           
             <dt>
               <label for="phone">
                 * Address:
@@ -169,21 +153,7 @@ include 'dbconfig.php';
           </div>
 
             </dd>
-            <dt>
-              <label for="phoneNumber">
-                Phone Number:
-              </label>
-            </dt>
-            <dd>
-            <div class="group">
-
-              <input type="text" class="phone" name="shphone">
-              <div id="phoneInfo"></div>
-              <span class="highlight"></span><span class="bar"></span>
-          </div>
-
-
-            </dd>
+            
             <dt>
               <label for="phone">
                 * Address Line 1:

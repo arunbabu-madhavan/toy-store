@@ -24,7 +24,8 @@ if(!isset($_SESSION["userId"]))
 foreach($cartItems as $item)
     $total+= $item->qty * $item->Price;
 
-$queryString = "INSERT INTO Sale VALUES( NULL,'" . $_SESSION['userId'] . "','" . $total . "','1' )";
+$queryString = "INSERT INTO Sale VALUES( NULL,'" . $_SESSION['userId'] . "','"
+ . $total . "','1',".'CURRENT_DATE()'.")";
 $insertSales = mysqli_query($conn, $queryString);
 $currentSaleId =  mysqli_insert_id($conn);
 echo $currentSaleId;

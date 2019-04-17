@@ -15,7 +15,7 @@ $(()=>{
             if(i !=0 &&  orders[i].orderID != orders[i-1].orderID)
                { 
               $('.order-history-container').append(orderItemElement);
-               orderItemElement = getOrderTemplate();
+               orderItemElement = getOrderTemplate( orders[i]);
             }
                 productItem = $('#order-product-item').html();
                 productItem = productItem.replace("$orderPicture",order.Picture.trim())
@@ -31,16 +31,14 @@ $(()=>{
             templateHTML = $('#order-item').html();
             templateHTML = templateHTML.replace("$orderDate",order.Date)
                      .replace("$orderTotal",order.total)
-                     .replace("$Shippingname",order.shName)
-                     .replace("$ShippingAddress1",order.shAddress)
-                     .replace("$ShippingCity",order.shCity)
-                     .replace("$ShippingZip",order.shZip)
-                     .replace("$ShippingPhone",order.shPhone)
+                     .replace("$Shippingname", order.shName === undefined ? order.bName : order.shName )
+                     .replace("$ShippingAddress1",order.shAddress === undefined ? order.bAddress : order.shAddress )
+                     .replace("$ShippingCity",order.shCity === undefined ? order.bCity : order.shCity )
+                     .replace("$ShippingZip",order.shZip === undefined ? order.bZip : order.shZip )
                      .replace("$Billingname",order.bName)
                      .replace("$BillingAddress1",order.bAddress)
                      .replace("$BillingCity",order.bCity)
                      .replace("$BillingZip",order.bZip)
-                     .replace("$BillingPhone",order.bPhone)
             return $(templateHTML);
            }
         }});

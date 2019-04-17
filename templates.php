@@ -10,9 +10,6 @@
         <div class="productPrice">
             $$price
         </div>
-        <div class="productQuantity">
-          $quantity
-        </div>
     </a>
     <div>
       <div class="productCart">
@@ -53,16 +50,14 @@
                     <p>$Shippingname</p>
                     <p>$ShippingAddress1</p>
                     <p>$ShippingCity</p>
-                    <p>$ShippingZip</p><br/>
-                    <p>$ShippingPhone</p>
+                    <p>$ShippingZip</p>
                 </shipping-address>
                 <billing-address>
                     <h3>Billing address:</h3>
                     <p>$Billingname</p>
                     <p>$BillingAddress1</p>
                     <p>$BillingCity</p>
-                    <p>$BillingZip</p><br/>
-                    <p>$BillingPhone</p>
+                    <p>$BillingZip</p>
                 </billing-address>
             </address-container>
             <product-list>
