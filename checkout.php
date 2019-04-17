@@ -123,6 +123,7 @@ include 'dbconfig.php';
             <dd>
             <div class="group">
               <input type="text" class="phone">
+              <div id="phoneInfo"></div>
               <span class="highlight"></span><span class="bar"></span>
           </div>
 
@@ -201,6 +202,7 @@ include 'dbconfig.php';
             <div class="group">
 
               <input type="text" class="phone">
+              <div id="phoneInfo"></div>
               <span class="highlight"></span><span class="bar"></span>
           </div>
 

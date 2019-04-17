@@ -1214,7 +1214,7 @@ footer img {
 
 .page .form-inlineMessage,
 #emailInfo,
-#passInfo {
+#passInfo, #phoneInfo {
   font-size: 12px;
   margin-left: 4px;
   color: #f00;
