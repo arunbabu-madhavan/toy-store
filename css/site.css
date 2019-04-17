@@ -842,6 +842,91 @@ header>div>* {
   white-space: pre-wrap;
 }
 
+.order-history-container{
+  border: 0.5px solid #ccc;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 25px;
+}
+.order-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 25px;
+  border-bottom: 1px solid #ccc;
+}
+order-date{
+  flex-basis: 50%;
+  font-size: x-large;
+  color: darkgreen;
+}
+
+order-total{
+  flex-basis: 50%;
+  text-align: right;
+  font-size: xx-large;
+  color: tomato;
+}
+product-list{
+  flex-grow: 2;
+}
+address-container p{
+  font-family: "Open Sans";
+}
+
+address-container{
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+}
+address-container > *{
+  flex-basis: 50%;
+}
+
+
+product-item img{
+  width:150px;
+  height:150px;
+}
+
+product-item{
+  display: flex;
+  flex-direction: row;
+  margin: 25px;
+}
+product-item > div > div:first-child{
+  margin-top: 30px;
+  width: 70%;
+  font-size: 16px;
+}
+product-item > div > div:first-child a{
+color:#0066c0;
+}
+product-item > div > div:first-child a:hover{
+  color:#c45500;
+  text-decoration: underline;
+  }
+
+product-item > div > div{
+  font:18px Segoe UI, arial;
+  padding-left: 20px;
+}
+product-item > div > div label{
+  font-weight: lighter;
+  font-size: medium;
+  margin-left: 10px;
+}
+
+product-item > div > div span { 
+color:#b12704;
+font-weight: 600;
+}
+product-item > div{
+  display: flex;
+  flex-direction: column;
+}
+
 .filter {
   margin-top: 10pt;
   cursor: pointer;

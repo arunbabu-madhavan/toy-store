@@ -105,7 +105,7 @@ include 'dbconfig.php';
         </dd>
         <dt>
           <label for="username">
-            * User Name:</span>
+            * Name:</span>
           </label>
         </dt>
         <dd>
@@ -181,7 +181,7 @@ include 'dbconfig.php';
         </dd>
         <dt>
           <label for="username">
-            * User Name:</span>
+            * Name:</span>
           </label>
         </dt>
         <dd>

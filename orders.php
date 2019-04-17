@@ -23,23 +23,7 @@
 <div class="content">
     <div class="pageHeader">Your orders</div>
     <div class="order-history-container">
-        <div class="order-container">
-            <order-date></order-date>
-            <order-total></order-total>
-            <order-list>
-                <order-item>
-                    <div>
-                    </div>
-                    <div>
-                        <div>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
-                </order-item>
-            </order-list>
-        </div>
-
+    
     </div>
 </div>
     <?php include 'footer.html'?>

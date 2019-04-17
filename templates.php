@@ -40,3 +40,47 @@
             <div></div>
         </div>
 </template>
+<template id="order-item">
+    <div class="order-container">
+            <order-date>Ordered $orderDate</order-date>
+            <order-total>$ $orderTotal</order-total>
+            <address-container>
+                <shipping-address>
+                    <h3>Shipping address:</h3>
+                    <p>$Shippingname</p>
+                    <p>$ShippingAddress1</p>
+                    <p>$ShippingCity</p>
+                    <p>$ShippingZip</p><br/>
+                    <p>$ShippingPhone</p>
+                </shipping-address>
+                <billing-address>
+                    <h3>Billing address:</h3>
+                    <p>$Billingname</p>
+                    <p>$BillingAddress1</p>
+                    <p>$BillingCity</p>
+                    <p>$BillingZip</p><br/>
+                    <p>$BillingPhone</p>
+                </billing-address>
+            </address-container>
+            <product-list>
+            </product-list>
+        </div>
+</template>
+<template id="order-product-item">
+    <product-item>
+         <div>
+            <img src="images\$orderPicture">
+         </div>
+         <div>
+             <div>
+                 <a href="product.php?id=$productID">
+                     $productName
+                 </a>
+             </div>
+             <div>
+                <span>$$productPrice </span>
+                <label>($productQty)</label>
+             </div>
+         </div>
+    </product-item>
+</template>

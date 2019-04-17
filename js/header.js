@@ -117,8 +117,8 @@ function updateCartText(){
   $('#cart-box-icon > span').text(count > 0 ? count : "0");
   if(count == 0)
       $('.floating-cart').hide();
-if($('.subtotal > h4'.length > 0))
-   $('.subtotal > h4').text(' $ '+ total.toFixed(2));
+  if($('.subtotal > h4'.length > 0))
+      $('.subtotal > h4').text(' $ '+ total.toFixed(2));
 
 }
 
