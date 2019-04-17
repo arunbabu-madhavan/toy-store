@@ -23,11 +23,13 @@ $user = mysqli_fetch_assoc($result);
 
 if($user == false){
   //echo $query;
+  $_SESSION['wrongLoginInfo'] = true;
   header("location: login.php");
   die();
 }
 else{
   //if user exist, set session username and email
+  $_SESSION['wrongLoginInfo'] = false;
   $_SESSION['userId'] = $user['userId'];
   $_SESSION['userName'] = $user['username'];
   $_SESSION['email'] = $user['email'];
