@@ -14,7 +14,7 @@ session_start();
 </head>
 <body>
   <?php include 'header.php' ?>
-  <?php 
+  <?php
   if(!empty($_SESSION['userName'])){
     header('location:index.php');
   }

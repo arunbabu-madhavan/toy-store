@@ -12,7 +12,7 @@ $(document).ready(function () {
   $("#password").on('blur', function () {
     var pattern = new RegExp(/^$/);
     var passVal = this.value;
-    if (passVal === undefined && this.value.length < 6 || pattern.test(passVal)) {
+    if (passVal === undefined || this.value.length < 6 || pattern.test(passVal)) {
       $("#passInfo").html("You must enter a password longer than 6 characters.");
       $('.login').prop("disabled", true);
     } else {
