@@ -26,7 +26,7 @@
 
     //Select database
     mysqli_select_db($conn,$databaseName);
-    $query = "SELECT DISTINCT product.Name, product.ID, product.Picture, product.Price FROM product
+    $query = "SELECT DISTINCT product.Name, product.ID, product.Picture, product.Price, product.Quantity FROM product
                 where product.IsDelete = 0 and product.Quantity > 0";
 
     $queryId = "SELECT product.ID FROM product
@@ -78,7 +78,7 @@
             $json_array[] = $row;
         $i++;
     }
-    
+
     $json_array[] =  mysqli_num_rows($result);
     $json_array[] =  $TotalPages;
 
