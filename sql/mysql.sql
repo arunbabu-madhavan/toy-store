@@ -289,7 +289,6 @@ INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '4',
 
 ALTER TABLE `User` ADD `password` VARCHAR(128) NOT NULL AFTER `email`;
 
-ALTER TABLE `cart` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `cart` ADD FOREIGN KEY (`productId`) REFERENCES `product`(`ID`) ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE `User` ADD UNIQUE(`username`);
 
 CREATE TABLE `toystore`.`role` ( `roleId` INT NOT NULL AUTO_INCREMENT , `description` VARCHAR(100) NOT NULL , PRIMARY KEY (`roleId`)) ENGINE = InnoDB;

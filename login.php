@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,11 @@ session_start();
 </head>
 <body>
   <?php include 'header.php' ?>
+  <?php
+  if(!empty($_SESSION['userName'])){
+    header('location:index.php');
+  }
+  ?>
   <div class='content'>
     <main>
     <div class="container">

@@ -54,7 +54,7 @@ session_start();
                                 <input type="submit" name="submit" class="btn btn-primary login" value="REGISTER"
                                     id="register_chk">
                             </div>
-                            <span id="errorinfo" class="text-danger"></span>
+                            <span id="errorinfo" class="text-warning font-weight-bold text-monospace" style="font-size: 150%"></span>
                         </div>
                     </div>
                 </div>
