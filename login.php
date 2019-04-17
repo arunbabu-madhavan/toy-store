@@ -38,6 +38,7 @@ session_start();
                   </div>
                   <div class="form-actions">
                   <div class="login-button-container">
+                      <?php if($_SESSION['wrongLoginInfo']) echo '<div id="emailInfo">Wrong username or password.</div>'; ?>
                       <input type="submit" class="btn btn-primary login" value="Login">
                   </div>
                   </div>
