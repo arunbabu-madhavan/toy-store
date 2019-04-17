@@ -59,15 +59,17 @@ include 'dbconfig.php';
         </div>
 
         <h3 id="accountDetails">Account Details</h3>
-        <div class="accountDetails" ><h5>Choose your checkout option</h5><br>Register with us for a faster checkout, to track the status of your order and more. You can also checkout as a guest.<br>
-        <input type="radio" name="method" value="guest" checked="checked"/>Checkout as Guest<br>
-          <?php
+        <div>
+        <?php
             if (!isset($_SESSION["userName"])) {
+              echo '<div class="accountDetails" ><h5>Choose your checkout option</h5><br>Register with us for a faster checkout, to track the status of your order and more. You can also checkout as a guest.<br>';
+              echo '<input type="radio" name="method" value="guest" checked="checked"/>Checkout as Guest<br>';
               echo '<input type="radio" name="method" value="register" />Register an Account<br>';
               echo '<input type="radio" name="method" value="returningCust" />Returning customer<br>';
-            }
+              echo '<button type="button" class="button button--primary" id="pickCheckout">Continue</button><br>';
+            } else echo "You have already logged in.<br>";
           ?>
-        <button type="button" class="button button--primary" id="pickCheckout">Continue</button><br>
+
         </div>
 
         <?php
