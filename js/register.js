@@ -73,7 +73,7 @@ $(document).ready(function () {
                     if (msg == "success") {
                         alert('Account Created Succesfully. Please Login!');
                         window.location.href = "login.php";
-                    } else if (msg == "error") {
+                    } else if (msg == "duplicate_error") {
                         $('#errorinfo').text('This email has already registered, please try another.');
                     }
                 },

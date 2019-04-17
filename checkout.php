@@ -30,9 +30,7 @@ include 'dbconfig.php';
             <div class="cartImage">PRODUCT</div>
             <div class="cartQTY">QTY</div>
             <div class="cartPrice">PRICE</div>
-
             <div class="cartTotal">TOTAL</div>
-
           </div>
           <?php
             $cartItems=$_SESSION['cartItems'];
@@ -90,26 +88,15 @@ include 'dbconfig.php';
         ?>
         <h3 class="billingInformation">Billing Details</h3>
           <dl class="billingDetails">
-            <dt>
-              <label for="email">
-                * Email Address:
-                <span class="highlight"></span><span class="bar"></span>
-              </label>
-            </dt>
-            <dd>
-              <div class="group">
-                <input type="text" class="email" value="<?php echo $user['email'] ? $user['email'] : ''; ?>">
-                <div id="emailInfo"></div>
-              </div>
-            </dd>
+           
             <dt>
               <label for="username">
-                * User Name:
+                *Name:
               </label>
             </dt>
             <dd>
             <div class="group">
-              <input type="text" class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
+              <input type="text"  name="bName" required class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
           </div>
 
@@ -122,7 +109,7 @@ include 'dbconfig.php';
             </dt>
             <dd>
             <div class="group">
-              <input type="text" class="phone">
+              <input type="text" name="bPhone"  class="phone" >
               <div id="phoneInfo"></div>
               <span class="highlight"></span><span class="bar"></span>
           </div>
@@ -135,7 +122,7 @@ include 'dbconfig.php';
             </dt>
             <dd>
             <div class="group">
-              <input type="text" style="width:500px" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+              <input type="text" name="bAddress" required style="width:500px" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
               </div>
 
@@ -148,7 +135,7 @@ include 'dbconfig.php';
             <dd>
             <div class="group">
 
-              <input type="text" class="city" value="<?php echo $user['city'] ? $user['city'] : ''; ?>">
+              <input type="text" name='bcity'  required class="city" value="<?php echo $user['city'] ? $user['city'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
               </div>
 
@@ -159,7 +146,7 @@ include 'dbconfig.php';
               </label>
             <div class="group">
 
-              <input type="text" class="zip"  value="<?php echo $user['zip'] ? $user['zip'] : ''; ?>"/>
+              <input type="text" name='bzip' class="zip" required value="<?php echo $user['zip'] ? $user['zip'] : ''; ?>"/>
               <span class="highlight"></span><span class="bar"></span>
               </div>
 
@@ -168,27 +155,14 @@ include 'dbconfig.php';
           </dl>
         <h3>Shipping Details</h3>
         <div class="shippingDetails"><dl>
-        <dt>
-              <label for="email">
-                * Email Address:
-              </label>
-            </dt>
-            <dd>
-            <div class="group">
-              <input type="text" class="email" value="<?php echo $user['email'] ? $user['email'] : ''; ?>">
-              <div id="emailInfo"></div>
-              <span class="highlight"></span><span class="bar"></span>
-              </div>
-
-            </dd>
             <dt>
               <label for="username">
-                * User Name:
+                *Name:
               </label>
             </dt>
             <dd>
             <div class="group">
-              <input type="text" class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
+              <input type="text" name="userName" required class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
           </div>
 
@@ -201,7 +175,7 @@ include 'dbconfig.php';
             <dd>
             <div class="group">
 
-              <input type="text" class="phone">
+              <input type="text" class="phone" name="shphone">
               <div id="phoneInfo"></div>
               <span class="highlight"></span><span class="bar"></span>
           </div>
@@ -216,7 +190,7 @@ include 'dbconfig.php';
             <dd>
             <div class="group">
 
-              <input type="text" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+              <input type="text" class="streetAddress" name='shippingAddress' required value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
           </div>
 
@@ -229,7 +203,7 @@ include 'dbconfig.php';
             <dd>
             <div class="group">
 
-              <input type="text" class="city" value="<?php echo $user['city'] ? $user['city'] : ''; ?>">
+              <input type="text" class="city" name='city' required value="<?php echo $user['city'] ? $user['city'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
           </div>
 
@@ -240,7 +214,7 @@ include 'dbconfig.php';
               </label>
               <div class="group">
 
-              <input type="text" class="zip"  value="<?php echo $user['zip'] ? $user['zip'] : ''; ?>"/>
+              <input type="text" class="zip" name='zip' required value="<?php echo $user['zip'] ? $user['zip'] : ''; ?>"/>
               <span class="highlight"></span><span class="bar"></span>
               </div>
             </dt>
@@ -248,7 +222,7 @@ include 'dbconfig.php';
           <button type="button" class="button button--primary" id="pickAddress">Continue</button></div>
         <h3>Order Confirmation</h3>
             <div class="orderdetails">
-              <button type="submit" id="placeOrder" class="button button--primary" name="submitQuantity">Continue</button><br>
+              <button type="submit" id="placeOrder" class="button button--primary" name="submitQuantity">Confirm Order</button><br>
             </div>
           </div>
         </div>

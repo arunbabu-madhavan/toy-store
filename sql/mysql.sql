@@ -301,3 +301,13 @@ UPDATE `User` SET `password` = '0e7caf4c6cd8b5e95673dacb9448ec244fe73a9a6b6f25ce
 UPDATE `User` SET `password` = 'bc536583de8a23ff015f0021c018630d971ed868ce0fbeba3737c57a9375557f' WHERE `User`.`userId` = 4;
 INSERT INTO `role` (`roleId`, `description`) VALUES ('1', 'admin'), ('2', 'customer');
 INSERT INTO `roleUser` (`roleId`, `userId`) VALUES ('1', '1'), ('2', '2'),('2','3'),('2','4');
+
+CREATE TABLE `toystore`.`shippingaddress` ( `userId` INT NOT NULL AUTO_INCREMENT ,
+ `Name` VARCHAR(40) NOT NULL ,
+`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL 
+, `zip` INT NOT NULL , saleId INT NOT NULL,
+PRIMARY KEY (`userId`)) ENGINE = InnoDB;
+ALTER TABLE `User` ADD UNIQUE(`email`);
+
+ALTER TABLE `shippingaddress` ADD FOREIGN KEY (`saleId`) REFERENCES `sale`(`saleId`);
+

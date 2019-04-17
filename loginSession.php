@@ -25,14 +25,13 @@ if($user == false){
   //echo $query;
   header("location: login.php");
   die();
-}else{
+}
+else{
   //if user exist, set session username and email
   $_SESSION['userId'] = $user['userId'];
   $_SESSION['userName'] = $user['username'];
   $_SESSION['email'] = $user['email'];
   $_SESSION["isAdmin"] = $user['roleId'] == 1 ? true : false;
-  // echo $_SESSION['userId'];
-  //echo (string)$_SESSION["isAdmin"] ;
   header("location: index.php");
   die();
 }

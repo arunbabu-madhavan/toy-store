@@ -5,13 +5,10 @@ $(()=>{
         type:"GET",
         dataType:'json',
         success:(orders)=>{
-            var orderID = 0;
-            for(var i=0;i<orders.length;i++)
-                orders[i].orderID = 1;
-            for(var i=0;i<2;i++)
-                orders[i].orderID = 2;
+            if(orders == null || orders.length == 0)
+                return;
 
-           var orderItemElement = getOrderTemplate();
+           var orderItemElement = getOrderTemplate(orders[0]);
            for(var i=0;i<orders.length;i++)
            {
             const order = orders[i];
@@ -20,9 +17,8 @@ $(()=>{
               $('.order-history-container').append(orderItemElement);
                orderItemElement = getOrderTemplate();
             }
-            
                 productItem = $('#order-product-item').html();
-                productItem = productItem.replace("$orderPicture",order.Picture)
+                productItem = productItem.replace("$orderPicture",order.Picture.trim())
                                     .replace("$productID",order.ID)
                                     .replace("$productName",order.Name)
                                     .replace("$productPrice",order.Price)
@@ -31,10 +27,20 @@ $(()=>{
            }
            $('.order-history-container').append(orderItemElement);
 
-           function getOrderTemplate(){
+           function getOrderTemplate(order){
             templateHTML = $('#order-item').html();
-            templateHTML = templateHTML.replace("$orderDate","Jan 3, 2019")
-                     .replace("$orderTotal","213");
+            templateHTML = templateHTML.replace("$orderDate",order.Date)
+                     .replace("$orderTotal",order.total)
+                     .replace("$Shippingname",order.shName)
+                     .replace("$ShippingAddress1",order.shAddress)
+                     .replace("$ShippingCity",order.shCity)
+                     .replace("$ShippingZip",order.shZip)
+                     .replace("$ShippingPhone",order.shPhone)
+                     .replace("$Billingname",order.bName)
+                     .replace("$BillingAddress1",order.bAddress)
+                     .replace("$BillingCity",order.bCity)
+                     .replace("$BillingZip",order.bZip)
+                     .replace("$BillingPhone",order.bPhone)
             return $(templateHTML);
            }
         }});

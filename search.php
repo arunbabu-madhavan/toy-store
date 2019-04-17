@@ -1,5 +1,7 @@
 <?php
-        include 'dbconfig.php';
+session_start();
+      
+      include 'dbconfig.php';
     
         $params = array();
 

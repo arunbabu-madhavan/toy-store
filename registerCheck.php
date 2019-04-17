@@ -18,19 +18,18 @@ if (!$con) {
 }
 
 $query1 = "select * from user where email = '$email';";
-$match1_e = mysqli_query($con, $query1) or die('MySQL error');
+$match1_e = mysqli_query($con, $query1) or die('MySQL error1');
 $match2_e = mysqli_fetch_array($match1_e);
 
 $hashPassword = hash('sha256',$password);
 if ($match2_e) {
-    echo 'error1';
+    echo 'duplicate_error';
 } else {
     $sql = "insert into user (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`, `password`)
                          values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$hashPassword');";
    
     $roleSql = "";
-
-    $result = mysqli_query($con, $sql) or die('MySQL error');
+    $result = mysqli_query($con, $sql) or die('MySQL error2');
 
     $result1 = mysqli_query($con, "SELECT * FROM user where email ='$email'");
 
