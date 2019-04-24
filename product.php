@@ -72,6 +72,7 @@
 						<div class="buyboxValue">$ <?php echo $row['Price']?></div>
 					</div>
 				</div>
+        <?php if($row['Quantity'] <= 0) echo 'Out of Stock'; ?>
           <div class="productCart">
             <div class="productCartImg"><img src="images/addcart.png"></div>
             <div class="productCartSpan">Add to Cart</div>

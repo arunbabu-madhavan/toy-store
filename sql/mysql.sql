@@ -273,7 +273,6 @@ ALTER TABLE `User` ADD UNIQUE(`email`);
 
 CREATE TABLE `toystore`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT,
 `completed` BOOLEAN NOT NULL , PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
-ALTER TABLE ADD COLUMN  
 ALTER TABLE `Sale` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 CREATE TABLE `toystore`.`SaleProduct` ( `saleId` INT NOT NULL , `productId` INT NOT NULL, `quantity` INT NOT NULL ) ENGINE = InnoDB;

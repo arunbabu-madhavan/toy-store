@@ -1,8 +1,8 @@
 <?php
 session_start();
-      
+
       include 'dbconfig.php';
-    
+
         $params = array();
 
         //Connect to mysql server
@@ -14,12 +14,12 @@ session_start();
 
         //Select database
         mysqli_select_db($conn,$databaseName);
-                
+
         //Construct the query
-        $query = "SELECT HeadCategory.Name AS HeadCategory,Category.Name,Category.ID 
-                  FROM Category 
-                  INNER JOIN HeadCategory 
-                  ON Category.HeadCategoryID = HeadCategory.ID 
+        $query = "SELECT HeadCategory.Name AS HeadCategory,Category.Name,Category.ID
+                  FROM Category
+                  INNER JOIN HeadCategory
+                  ON Category.HeadCategoryID = HeadCategory.ID
                   ORDER BY HeadCategory.ID,Category.Name";
 
         //Execute the query
@@ -41,7 +41,7 @@ session_start();
         <div class='leftSidebar'>
             <div class="heading">FILTER BY:</div>
             <div class="filters">
-                <?php 
+                <?php
                     $headCategory  = '';
                     if($categories && mysqli_num_rows($categories) > 0){
                         while($row = mysqli_fetch_array($categories))
@@ -60,7 +60,7 @@ session_start();
                                     echo '<div class="filterBlock">';
                                         echo '<ul>';
                             }
-                                            echo  '<li><input type="checkbox" '.isSelected($row["ID"],$row['Name']).'  
+                                            echo  '<li><input type="checkbox" '.isSelected($row["ID"],$row['Name']).'
                                                         onclick="filterResults('."'"."filter"."'".',$(this).prop('."'"."checked"."'".'),'.$row['ID'].');loadSearchResults();"/>
                                                          <span class="filter-option" onclick="$(this).prev().click()">'.$row['Name'].
                                                          '</span></li>';
@@ -70,15 +70,15 @@ session_start();
                                     echo '</div>';
                                  echo '</div>';
                     }
-                  
+
                 ?>
             </div>
-        </div>  
+        </div>
         <div class='loading'>
                     <img src="images\ajax-loader.gif"/>
             </div>
         <div class="search-result">
-            
+
             <div id="searchHeader">
                 <span>
                 </span>
@@ -97,14 +97,14 @@ session_start();
                 <ul>
                 </ul>
             </div>
-        </div> 
+        </div>
      </div>
      <?php include 'footer.html'?>
-  
+
 </body>
 </html>
 
-<?php 
+<?php
   //close connection
   mysqli_close($conn);
 
@@ -119,10 +119,10 @@ session_start();
       list($name, $value) = explode('=', $param, 2);
       $params[urldecode($name)][] = urldecode($value);
     }
-    
+
     if(isset($params['filter']))
         for($i=0;$i<count($params['filter']);$i++)
-            if($params['filter'][$i] == $controlValue) 
+            if($params['filter'][$i] == $controlValue)
                 return "checked";
 
     if($check)

@@ -156,14 +156,22 @@ function loadProducts(type, $after, $append) {
  * @param {*} $append
  */
 function bindProductTemplate(products, $after, $append) {
-  const item = (product) => $('#new-product-block').html()
-    .replace('$imgsrc', product.Picture.trim())
-    .replace('$productText', product.Name)
-    .replace('$price', product.Price)
-    .replace('$productId', product.ID)
-    .replace('$productId', product.ID)
-    .replace('$productId', product.ID)
-    .replace('$product', JSON.stringify(product).replaceAll("'", "").replaceAll("\"", "'"))
+
+    const item = (product) => {
+        //it breaks when I bring the arrow function inside these brackets.
+
+        // var outOfStock = product.Quantity <= 0 ? 'Out of Stock' : '';
+        // console.log(product.Quantity, outOfStock);
+        $('#new-product-block').html()
+        .replace('$imgsrc', product.Picture.trim())
+        .replace('$productText', product.Name)
+        //.replace('$outOfStockMessage', outOfStock)
+        .replace('$price', product.Price)
+        .replace('$productId', product.ID)
+        .replace('$productId', product.ID)
+        .replace('$productId', product.ID)
+        .replace('$product', JSON.stringify(product).replaceAll("'", "").replaceAll("\"", "'"));
+    };
 
   if ($after)
     $after.after(products.map(item).join(''));

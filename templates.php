@@ -1,3 +1,4 @@
+<!--Individual product window template -->
 <template id='new-product-block'>
   <div class="product-block">
     <a href="product.php?id=$productId">
@@ -7,6 +8,9 @@
         <div class="productText">
               $productText
         </div>
+        <!--<div class="outOfStockMessage">
+            $outOfStockMessage
+        </div>-->
         <div class="productPrice">
             $$price
         </div>
@@ -15,8 +19,7 @@
       <div class="productCart">
         <div class="productCartImg"><img src="images/addcart.png"></div>
         <div class="productCartSpan">Add to Cart</div>
-        <input type="button" value=""
-                                onclick='addToCart($product)'>
+        <input type="button" value="" onclick='addToCart($product)'>
       </div>
     </div>
   </div>
@@ -29,6 +32,8 @@
     }
   ?>
 </template>
+
+<!--floating cart window when clicking on cart -->
 <template id="floating-cart-item">
         <div class="floating-cart-row" id="cart-$productId">
             <div class="floating-cart-img">
