@@ -29,7 +29,7 @@ mysqli_select_db($conn,$databaseName);
     ON sale.saleId = saleproduct.saleId
     inner join product on product.ID = saleproduct.productId 
     inner join user on user.userid = sale.userId
-    where completed = 1 and sale.userId =".$userId;
+    where completed = 1 and sale.userId =".$userId." order by sale.date desc";
 
     //Execute the query
     $result = mysqli_query($conn,$query);

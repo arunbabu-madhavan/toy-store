@@ -98,9 +98,7 @@ include 'dbconfig.php';
               <input type="text"  name="bName" required class="firstName" value="<?php echo $user['username'] ? $user['username'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
           </div>
-
             </dd>
-           
             <dt>
               <label for="phone">
                 * Address:

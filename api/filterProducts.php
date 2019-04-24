@@ -4,6 +4,7 @@
     $hotSellers = isset($_GET["hotSellers"]) ? intval($_GET["hotSellers"]) : 0;
     $search = isset($_GET["search"]) ? strtolower(urldecode($_GET["search"])) : "" ;
 
+    //PAGE COUNT
     $page_count = 8;
     session_start();
 

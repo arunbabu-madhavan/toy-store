@@ -12,7 +12,7 @@ if (mysqli_connect_errno())
 $cartItems = $_SESSION['cartItems'];
 
 // insert into Sale, SaleProduct, and Product (update quantity)
-$total = 0;
+$total = 0.0;
 
 if(!isset($_SESSION["userId"]))
     {
@@ -26,9 +26,10 @@ foreach($cartItems as $item)
 
 $queryString = "INSERT INTO Sale VALUES( NULL,'" . $_SESSION['userId'] . "','"
  . $total . "','1',".'CURRENT_DATE()'.")";
+
+ 
 $insertSales = mysqli_query($conn, $queryString);
 $currentSaleId =  mysqli_insert_id($conn);
-echo $currentSaleId;
 
 //reduce amount and save sales in database
 foreach($cartItems as $item)
