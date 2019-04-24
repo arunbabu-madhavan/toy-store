@@ -266,17 +266,17 @@ INSERT INTO productcategory(ProductID,CategoryID) values
 INSERT INTO productcategory(ProductID,CategoryID) values
 (LAST_INSERT_ID() , 13);
 
-CREATE TABLE `toystore`.`User` ( `userId` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(40) NOT NULL ,
+CREATE TABLE `User` ( `userId` INT NOT NULL AUTO_INCREMENT , `username` VARCHAR(40) NOT NULL ,
 `streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL , `email` VARCHAR(40) NOT NULL ,
 PRIMARY KEY (`userId`)) ENGINE = InnoDB;
 ALTER TABLE `User` ADD UNIQUE(`email`);
 
-CREATE TABLE `toystore`.`Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` INT,
-`completed` BOOLEAN NOT NULL , PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
-ALTER TABLE ADD COLUMN  
+CREATE TABLE `Sale` ( `saleId` INT NOT NULL AUTO_INCREMENT , `userId` INT NOT NULL , `total` DECIMAL(10,2),
+`completed` BOOLEAN NOT NULL , `Date` date DEFAULT NULL, PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
+
 ALTER TABLE `Sale` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
-CREATE TABLE `toystore`.`SaleProduct` ( `saleId` INT NOT NULL , `productId` INT NOT NULL, `quantity` INT NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `SaleProduct` ( `saleId` INT NOT NULL , `productId` INT NOT NULL, `quantity` INT NOT NULL ) ENGINE = InnoDB;
 ALTER TABLE `SaleProduct` ADD  FOREIGN KEY (`saleId`) REFERENCES `Sale`(`saleId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE `SaleProduct` ADD  FOREIGN KEY (`productId`) REFERENCES `product`(`ID`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -285,15 +285,12 @@ INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email
 INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Jennifer Tran', '3150 Sabre Drive Southlake', 'Southlake', '76092', 'jtran@sabre.com');
 INSERT INTO `User` (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`) VALUES (NULL, 'Nick Fealy', '3739 N Steele Blvd, Ste 300', 'Fayetteville', '72703', 'nfealy@supplypike.com');
 
-INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '1', NULL, '1');
-INSERT INTO `Sale` (`saleId`, `userId`, `total`, `completed`) VALUES (NULL, '4', NULL, '0');
-
 ALTER TABLE `User` ADD `password` VARCHAR(128) NOT NULL AFTER `email`;
 
 ALTER TABLE `User` ADD UNIQUE(`username`);
 
-CREATE TABLE `toystore`.`role` ( `roleId` INT NOT NULL AUTO_INCREMENT , `description` VARCHAR(100) NOT NULL , PRIMARY KEY (`roleId`)) ENGINE = InnoDB;
-CREATE TABLE `toystore`.`roleUser` ( `roleId` INT NOT NULL , `userId` INT NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `role` ( `roleId` INT NOT NULL AUTO_INCREMENT , `description` VARCHAR(100) NOT NULL , PRIMARY KEY (`roleId`)) ENGINE = InnoDB;
+CREATE TABLE `roleUser` ( `roleId` INT NOT NULL , `userId` INT NOT NULL ) ENGINE = InnoDB;
 ALTER TABLE `roleUser` ADD FOREIGN KEY (`roleId`) REFERENCES `role`(`roleId`) ON DELETE RESTRICT ON UPDATE CASCADE; ALTER TABLE `roleUser` ADD FOREIGN KEY (`userId`) REFERENCES `User`(`userId`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 UPDATE `User` SET `password` = 'e61d6c9a5685a12bcefdefb0606d6ef5ba51b147068ba38f3d02947536e14924' WHERE `User`.`userId` = 1;

@@ -12,11 +12,14 @@
         </div>
     </a>
     <div>
-      <div class="productCart">
+      <div class="productCart $hide">
         <div class="productCartImg"><img src="images/addcart.png"></div>
         <div class="productCartSpan">Add to Cart</div>
         <input type="button" value=""
                                 onclick='addToCart($product)'>
+      </div>
+      <div class="$hide" style="display:none">
+       <h4> Out of Stock</h4>
       </div>
     </div>
   </div>

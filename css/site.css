@@ -868,6 +868,21 @@ order-total{
   font-size: xx-large;
   color: tomato;
 }
+
+.outOfStock{
+  display: block!important;
+}
+
+.outOfStock > h4
+{
+  text-align: center;
+  padding: 20px;
+}
+.productCart.outOfStock{
+  display: none!important;
+}
+
+
 product-list{
   flex-grow: 2;
 }

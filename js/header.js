@@ -163,7 +163,10 @@ function bindProductTemplate(products, $after, $append) {
     .replace('$productId', product.ID)
     .replace('$productId', product.ID)
     .replace('$productId', product.ID)
-    .replace('$product', JSON.stringify(product).replaceAll("'", "").replaceAll("\"", "'"))
+    .replace('$hide', product.Quantity == "0" ? "outOfStock" : "")
+    .replace('$hide', product.Quantity == "0" ? "outOfStock" : "")
+    .replace('$product', JSON.stringify(product)
+                    .replaceAll("'", "").replaceAll("\"", "'"))
 
   if ($after)
     $after.after(products.map(item).join(''));

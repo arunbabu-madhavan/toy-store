@@ -9,7 +9,7 @@ $zip = $_POST["zip"];
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "root";
-$dbname = "toystore"; //databaseName
+$dbname = "toystore1"; //databaseName
 
 $con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
