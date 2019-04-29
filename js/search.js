@@ -82,7 +82,7 @@ function loadSearchResults(){
             term = term ? decodeURIComponent(term):'';
 
             $('#searchHeader span.term').text(`'${term}'`);
-           
+            document.getElementsByName('search')[0].value = term;
             if(queries.page)
                 currentPage = queries.page[0];
 

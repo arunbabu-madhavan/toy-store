@@ -54,7 +54,8 @@ function addToCart(product, updateSession = true) {
     qty = $(cartItemId).find('.qty').text();
     if ( +qty + (+1) > +product.Quantity)
         {
-            alert("Maxmimum quantity reached");
+            alert("Maxmimum available units reached. Available units: "+product.Quantity);
+            count--;
             return;
         }
     $(cartItemId).find('.qty').text(++qty);
@@ -163,8 +164,8 @@ function bindProductTemplate(products, $after, $append) {
     .replace('$productId', product.ID)
     .replace('$productId', product.ID)
     .replace('$productId', product.ID)
-    .replace('$hide', product.Quantity == "0" ? "outOfStock" : "")
-    .replace('$hide', product.Quantity == "0" ? "outOfStock" : "")
+    .replace('$hide', +product.Quantity <= 0 ? "outOfStock" : "")
+    .replace('$hide', +product.Quantity <= 0 ? "outOfStock" : "")
     .replace('$product', JSON.stringify(product)
                     .replaceAll("'", "").replaceAll("\"", "'"))
 

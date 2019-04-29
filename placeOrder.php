@@ -11,7 +11,6 @@ if (mysqli_connect_errno())
 
 $cartItems = $_SESSION['cartItems'];
 
-// insert into Sale, SaleProduct, and Product (update quantity)
 $total = 0.0;
 
 if(!isset($_SESSION["userId"]))
@@ -20,6 +19,24 @@ if(!isset($_SESSION["userId"]))
         exit();
     }
 
+    $bName = $_POST["bName"];
+    $bAddress = $_POST["bAddress"];
+    $bcity = $_POST["bcity"];
+    $bzip = $_POST["bzip"];
+
+    $shName = $_POST["userName"];
+    $shAddress = $_POST["shippingAddress"];
+    $shcity = $_POST["city"];
+    $shzip = $_POST["zip"];
+
+    $updateBillingAddressSql  = 'UPDATE user
+     SET username="'.$bName.'"
+    ,streetAddress="'.$bAddress.'"
+    ,city="'.$bcity.'"
+    ,zip="'.$bzip.'"
+    WHERE userId='.$_SESSION["userId"]; 
+
+  mysqli_query($conn, $updateBillingAddressSql);
 
 foreach($cartItems as $item)
     $total+= $item->qty * $item->Price;
@@ -37,12 +54,22 @@ foreach($cartItems as $item)
     $queryString = "UPDATE product SET quantity = quantity - " . $item->qty . " WHERE product.ID = '" . $item->ID . "'";
     $result = mysqli_query($conn, $queryString);
     $queryString = "INSERT INTO SaleProduct VALUES ('" . $currentSaleId . "','" . $item->ID . "','".$item->qty."')";
-    echo $queryString;
     $insertSaleProduct = mysqli_query($conn, $queryString);
 }
 
+$updateshippingAddressSql    = 'INSERT INTO shippingaddress 
+                        (saleId, name, streetAddress, city, zip) 
+                         values( "'.$currentSaleId.'","
+                    '.$shName.'","
+                    '.$shAddress.'","
+                    '.$shcity.'",
+                    '.$shzip.')';
+                    echo $updateshippingAddressSql ;
+
+mysqli_query($conn, $updateshippingAddressSql);
+
 unset($_SESSION['cartItems']);
 mysqli_close($conn);
-header("Location: index.php");
+//header("Location: orders.php");
 ?>
 

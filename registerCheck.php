@@ -5,13 +5,9 @@ $password = $_POST["password"];
 $streetAddress = $_POST["streetAddress"];
 $city = $_POST["city"];
 $zip = $_POST["zip"];
+include 'dbconfig.php';
 
-$dbhost = "localhost";
-$dbuser = "root";
-$dbpass = "root";
-$dbname = "toystore1"; //databaseName
-
-$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+$con = mysqli_connect("$serverName:$port",$username,$password);
 
 if (!$con) {
     echo "Failed to connect to MySQL: ";

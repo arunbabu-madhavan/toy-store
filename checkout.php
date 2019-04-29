@@ -87,7 +87,6 @@ include 'dbconfig.php';
         ?>
         <h3 class="billingInformation">Billing Details</h3>
           <dl class="billingDetails">
-           
             <dt>
               <label for="username">
                 *Name:

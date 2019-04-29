@@ -18,18 +18,24 @@ if(mysqli_connect_errno()){
 }
 
 mysqli_select_db($conn,$databaseName);
-    $query = "SELECT sale.`saleId` as 'orderID', user.`userId`,sale.Date, `total`,product.ID,product.Name,product.Price,product.Picture,saleproduct.quantity as 'qty'
-    
+    $query = "SELECT sale.`saleId` as 'orderID', user.`userId`,sale.Date
+    , `total`,product.ID,product.Name,product.Price,product.Picture
+    ,saleproduct.quantity as 'qty'
     , user.username as 'bName'
     , user.streetAddress as 'bAddress'
     , user.city as 'bCity'
     , user.zip as 'bZip'
+    , shippingaddress.name as 'shName'
+    , shippingaddress.streetAddress as 'shAddress'
+    , shippingaddress.city as 'shCity'
+    , shippingaddress.zip as 'shZip'
      FROM `sale` 
     INNER JOIN saleproduct 
     ON sale.saleId = saleproduct.saleId
     inner join product on product.ID = saleproduct.productId 
     inner join user on user.userid = sale.userId
-    where completed = 1 and sale.userId =".$userId." order by sale.date desc";
+    inner join shippingaddress on shippingaddress.saleid = sale.saleid
+    where completed = 1 and sale.userId =".$userId." order by sale.date desc,sale.saleId desc";
 
     //Execute the query
     $result = mysqli_query($conn,$query);

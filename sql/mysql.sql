@@ -299,3 +299,10 @@ UPDATE `User` SET `password` = '0e7caf4c6cd8b5e95673dacb9448ec244fe73a9a6b6f25ce
 UPDATE `User` SET `password` = 'bc536583de8a23ff015f0021c018630d971ed868ce0fbeba3737c57a9375557f' WHERE `User`.`userId` = 4;
 INSERT INTO `role` (`roleId`, `description`) VALUES ('1', 'admin'), ('2', 'customer');
 INSERT INTO `roleUser` (`roleId`, `userId`) VALUES ('1', '1'), ('2', '2'),('2','3'),('2','4');
+
+
+CREATE TABLE `shippingAddress` ( `saleId` INT NOT NULL , `name` VARCHAR(40) NOT NULL ,
+`streetAddress` VARCHAR(100) NOT NULL , `city` VARCHAR(40) NOT NULL , `zip` INT NOT NULL ,
+PRIMARY KEY (`saleId`)) ENGINE = InnoDB;
+
+ALTER TABLE `shippingAddress` ADD  FOREIGN KEY (`saleId`) REFERENCES `Sale`(`saleId`) ON DELETE RESTRICT ON UPDATE CASCADE;

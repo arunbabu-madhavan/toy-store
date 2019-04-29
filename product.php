@@ -72,7 +72,7 @@
 						<div class="buyboxValue">$ <?php echo $row['Price']?></div>
 					</div>
 				</div>
-          <div class="productCart <?php echo $row['Quantity'] == 0 ? "outOfStock" : ""?>">
+          <div class="productCart <?php echo $row['Quantity'] <= 0 ? "outOfStock" : ""?>">
             <div class="productCartImg"><img src="images/addcart.png"></div>
             <div class="productCartSpan">Add to Cart</div>
             <input type="button" value="" 

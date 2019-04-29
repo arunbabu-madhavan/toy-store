@@ -51,8 +51,6 @@
     $productID = $_POST['product-id'];
 
 
-
-
     if($addMode)
     {
         $query = 'INSERT INTO product (Name,Description,Picture, Price, Quantity, IsDelete) 
