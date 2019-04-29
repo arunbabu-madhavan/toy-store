@@ -75,11 +75,13 @@
           <div class="productCart <?php echo $row['Quantity'] <= 0 ? "outOfStock" : ""?>">
             <div class="productCartImg"><img src="images/addcart.png"></div>
             <div class="productCartSpan">Add to Cart</div>
-            <input type="button" value="" 
+            <input type="button" value=""
             onclick="addToCart(<?php echo $productDetail ?>)" <?php if($row['Quantity'] <= 0) echo 'disabled'; ?>>
           </div>
           <br/>
-          <div class="btn btn-warning btn-lg btn-block">Checkout</div>
+            <a href="checkout.php">
+                <div class="btn btn-warning btn-lg btn-block">Checkout</div>
+            </a>
         </div>
         </div>
       </div>
