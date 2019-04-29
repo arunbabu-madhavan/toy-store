@@ -105,7 +105,7 @@ include 'dbconfig.php';
             </dt>
             <dd>
             <div class="group">
-              <input type="text" name="bAddress" required style="width:500px" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+              <input class="billingAddress" type="text" name="bAddress" required style="width:500px" class="streetAddress" value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
               </div>
 
@@ -150,16 +150,16 @@ include 'dbconfig.php';
           </div>
 
             </dd>
-            
+
             <dt>
               <label for="phone">
-                * Address Line 1:
+                * Address:
               </label>
             </dt>
             <dd>
             <div class="group">
 
-              <input type="text" class="streetAddress" name='shippingAddress' required value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
+              <input class="shippingAddress" type="text" class="streetAddress" name='shippingAddress' required value="<?php echo $user['streetAddress'] ? $user['streetAddress'] : ''; ?>">
               <span class="highlight"></span><span class="bar"></span>
           </div>
 

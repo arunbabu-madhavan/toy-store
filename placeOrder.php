@@ -34,7 +34,7 @@ if(!isset($_SESSION["userId"]))
     ,streetAddress="'.$bAddress.'"
     ,city="'.$bcity.'"
     ,zip="'.$bzip.'"
-    WHERE userId='.$_SESSION["userId"]; 
+    WHERE userId='.$_SESSION["userId"];
 
   mysqli_query($conn, $updateBillingAddressSql);
 
@@ -44,7 +44,7 @@ foreach($cartItems as $item)
 $queryString = "INSERT INTO Sale VALUES( NULL,'" . $_SESSION['userId'] . "','"
  . $total . "','1',".'CURRENT_DATE()'.")";
 
- 
+
 $insertSales = mysqli_query($conn, $queryString);
 $currentSaleId =  mysqli_insert_id($conn);
 
@@ -57,8 +57,8 @@ foreach($cartItems as $item)
     $insertSaleProduct = mysqli_query($conn, $queryString);
 }
 
-$updateshippingAddressSql    = 'INSERT INTO shippingaddress 
-                        (saleId, name, streetAddress, city, zip) 
+$updateshippingAddressSql    = 'INSERT INTO shippingAddress
+                        (saleId, name, streetAddress, city, zip)
                          values( "'.$currentSaleId.'","
                     '.$shName.'","
                     '.$shAddress.'","
