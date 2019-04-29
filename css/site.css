@@ -869,6 +869,10 @@ order-total{
   color: tomato;
 }
 
+.button.button--primary:disabled {
+  background: gainsboro;
+}
+
 .outOfStock{
   display: block!important;
 }

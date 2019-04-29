@@ -70,6 +70,6 @@ mysqli_query($conn, $updateshippingAddressSql);
 
 unset($_SESSION['cartItems']);
 mysqli_close($conn);
-//header("Location: orders.php");
+header("Location: orders.php");
 ?>
 

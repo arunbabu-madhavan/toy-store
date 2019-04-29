@@ -28,6 +28,7 @@ $(document).ready(function () {
   });
 
   $("#pickBilling").click(function (e) {
+
     var answer = $('input[name=method]:checked').val();
     if (answer === "register") {
        window.location.href = "register.php";
@@ -59,28 +60,6 @@ $(document).ready(function () {
       $("#accountDetails").click();
     }, 1);
   }
-
-  $(".email").on('focusout', function () {
-    var pattern = new RegExp(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
-    var email = $(this).val();
-    if (pattern.test(email)) {
-      $("#emailInfo").text("");
-    } else {
-      $("#emailInfo").text("Please use a valid email address, such as user@example.com.");
-    }
-  });
-
-  $(".phone").on('focusout', function () {
-    var pattern = new RegExp(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/);
-    var email = $(this).val();
-    if (pattern.test(email)) {
-      $("#phoneInfo").text("");
-    } else {
-      $("#phoneInfo").text("Please use a valid phone number.");
-    }
-  });
-
-
 
 });
 

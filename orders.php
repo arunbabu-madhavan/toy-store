@@ -23,7 +23,6 @@
 <div class="content">
     <div class="pageHeader">Your orders</div>
     <div class="order-history-container">
-    
     </div>
 </div>
     <?php include 'footer.html'?>
