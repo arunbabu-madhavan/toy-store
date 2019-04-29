@@ -4,12 +4,15 @@ include '../dbconfig.php';
 
 
 if(!isset($_SESSION["userId"]))
-    {
-        header("Location: login.php");
-        exit();
-    }
+{
+    header("Location: login.php");
+    exit();
+}
 
 $userId = $_SESSION['userId'];
+
+//debug
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 $conn = mysqli_connect("$serverName:$port",$username,$password);
 
@@ -18,25 +21,26 @@ if(mysqli_connect_errno()){
 }
 
 mysqli_select_db($conn,$databaseName);
-    $query = "SELECT sale.`saleId` as 'orderID', user.`userId`,sale.Date
+    $query = "SELECT Sale.`saleId` as 'orderID', User.`userId`,Sale.Date
     , `total`,product.ID,product.Name,product.Price,product.Picture
-    ,saleproduct.quantity as 'qty'
-    , user.username as 'bName'
-    , user.streetAddress as 'bAddress'
-    , user.city as 'bCity'
-    , user.zip as 'bZip'
-    , shippingaddress.name as 'shName'
-    , shippingaddress.streetAddress as 'shAddress'
-    , shippingaddress.city as 'shCity'
-    , shippingaddress.zip as 'shZip'
-     FROM `sale` 
-    INNER JOIN saleproduct 
-    ON sale.saleId = saleproduct.saleId
-    inner join product on product.ID = saleproduct.productId 
-    inner join user on user.userid = sale.userId
-    inner join shippingaddress on shippingaddress.saleid = sale.saleid
-    where completed = 1 and sale.userId =".$userId." order by sale.date desc,sale.saleId desc";
+    ,SaleProduct.quantity as 'qty'
+    , User.username as 'bName'
+    , User.streetAddress as 'bAddress'
+    , User.city as 'bCity'
+    , User.zip as 'bZip'
+    , shippingAddress.name as 'shName'
+    , shippingAddress.streetAddress as 'shAddress'
+    , shippingAddress.city as 'shCity'
+    , shippingAddress.zip as 'shZip'
+     FROM `Sale`
+    INNER JOIN SaleProduct
+    ON Sale.saleId = SaleProduct.saleId
+    inner join product on product.ID = SaleProduct.productId
+    inner join User on User.userId = Sale.userId
+    inner join shippingAddress on shippingAddress.saleId = Sale.saleId
+    where completed = 1 and Sale.userId =".$userId." order by Sale.date desc,Sale.saleId desc";
 
+    echo $query;
     //Execute the query
     $result = mysqli_query($conn,$query);
 
@@ -44,7 +48,7 @@ mysqli_select_db($conn,$databaseName);
 
     while($row = mysqli_fetch_assoc($result))
         $json_array[] = $row;
-    
+
     echo json_encode($json_array);
 
 ?>
