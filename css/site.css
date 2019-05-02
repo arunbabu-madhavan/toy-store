@@ -868,7 +868,11 @@ order-total{
   font-size: xx-large;
   color: tomato;
 }
-
+order-number{
+  font-size:12pt;
+  color: #000;
+  font-family: 'Mitr', Tahoma, Geneva, Verdana, sans-serif;
+}
 .button.button--primary:disabled {
   background: gainsboro;
 }

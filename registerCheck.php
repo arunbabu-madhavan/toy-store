@@ -1,13 +1,15 @@
 <?php
-$username = $_POST["username"];
+$name = $_POST["username"];
 $email = $_POST["email"];
-$password = $_POST["password"];
+$pass = $_POST["password"];
 $streetAddress = $_POST["streetAddress"];
 $city = $_POST["city"];
 $zip = $_POST["zip"];
+
 include 'dbconfig.php';
 
 $con = mysqli_connect("$serverName:$port",$username,$password);
+mysqli_select_db($con,$databaseName);
 
 if (!$con) {
     echo "Failed to connect to MySQL: ";
@@ -17,12 +19,12 @@ $query1 = "select * from user where email = '$email';";
 $match1_e = mysqli_query($con, $query1) or die('MySQL error1');
 $match2_e = mysqli_fetch_array($match1_e);
 
-$hashPassword = hash('sha256',$password);
+$hashPassword = hash('sha256',$pass);
 if ($match2_e) {
     echo 'duplicate_error';
 } else {
     $sql = "insert into user (`userId`, `username`, `streetAddress`, `city`, `zip`, `email`, `password`)
-                         values (null, '$username', '$streetAddress', '$city', '$zip', '$email', '$hashPassword');";
+                         values (null, '$name', '$streetAddress', '$city', '$zip', '$email', '$hashPassword');";
    
     $roleSql = "";
     $result = mysqli_query($con, $sql) or die('MySQL error2');

@@ -31,6 +31,7 @@ $(()=>{
             templateHTML = $('#order-item').html();
             templateHTML = templateHTML.replace("$orderDate",order.Date)
                      .replace("$orderTotal",order.total)
+                     .replace("$saleId",+ order.userId + "-" + order.orderID +"-" + order.Date )
                      .replace("$Shippingname", order.shName === undefined ? order.bName : order.shName )
                      .replace("$ShippingAddress1",order.shAddress === undefined ? order.bAddress : order.shAddress )
                      .replace("$ShippingCity",order.shCity === undefined ? order.bCity : order.shCity )

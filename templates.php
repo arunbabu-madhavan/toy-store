@@ -45,7 +45,10 @@
 </template>
 <template id="order-item">
     <div class="order-container">
-            <order-date>Ordered $orderDate</order-date>
+            <order-date>Ordered $orderDate<br>
+            <order-number>Order No: $saleId</order-number>
+            
+            </order-date>
             <order-total>$ $orderTotal</order-total>
             <address-container>
                 <shipping-address>

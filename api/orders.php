@@ -40,7 +40,6 @@ mysqli_select_db($conn,$databaseName);
     inner join shippingAddress on shippingAddress.saleId = Sale.saleId
     where completed = 1 and Sale.userId =".$userId." order by Sale.date desc,Sale.saleId desc";
 
-    echo $query;
     //Execute the query
     $result = mysqli_query($conn,$query);
 
